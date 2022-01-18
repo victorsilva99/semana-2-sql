@@ -35,4 +35,4 @@ EX: Nome_Prod, Nome_Cliente, Valor_Prod, Endereco.
 - **Linha:** Trata-se de um conjunto de valores de colunas relacionados, conhecido por vezes também como **tupla** ou **registro**.  
 - **Tabela:** Resultado do cruzamento de linhas e colunas. É uma coleção de **linhas (registros)** em um banco de dados relacional, que armazena dados referentes a uma **entidade (assunto)** em particular.  
 
-![Exemplo] (/img/exemplo-tabela.png)
+![Exemplo] (./img/exemplo-tabela.png)
