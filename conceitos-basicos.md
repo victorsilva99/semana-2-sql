@@ -36,3 +36,65 @@ EX: Nome_Prod, Nome_Cliente, Valor_Prod, Endereco.
 - **Tabela:** Resultado do cruzamento de linhas e colunas. É uma coleção de **linhas (registros)** em um banco de dados relacional, que armazena dados referentes a uma **entidade (assunto)** em particular.  
 
 ![Exemplo](./img/exemplo-tabela.png)
+
+## 5. SQL - Structured Query Language
+
+- **Linguagem de Consulta Estruturada.**
+- Usada para realizar a comunicação com um banco de dados.
+- Padrão em bancos de dados relacionais.
+- Permite efetuar tarefas como:
+  - Inserir registros;
+  - Atualizar informações;
+  - Excluir dados de dados;
+  - Consultar informações armazenadas de dados;
+  - Gerenciar permissões e segurança;
+
+## 6. Chave
+
+- Uma ou mais colunas de uma relação cujos valores são usados para identificar de forma exclusiva uma linha ou conjunto de linhas.
+- Pode ser:
+  - Alternativa;
+  - Candidata;
+  - Composta;
+  - Estrangeira; **(FK - Foreign Key)** // Chaves mais importantes, usadas para criar
+  - Primária; **(PK - Primary Key)**   //  relacionamento entre as tabelas.
+  - Substituta (Surrogada - Surrogate);
+
+![Exemplo](./img/exemplo-chaves.png)
+
+## 7. Índices
+
+- Estrutura de dados empregada para **otimizar a seleção de um conjunto específico de colunas** em um banco de dados relacional.
+- Uma das ferramentas de otimização mais conhecidas e utilizadas pelos desenvolvedores de bancos de dados.
+- Indexação em tabelas **pode aumentar significativamente a performance em consultas** ao banco de dados.
+- Porém, **pode diminuir a velocidade de transações** como *inserts* e *updates*.
+
+## 8. Backup e Restauração
+
+- **Operações de extrema importância em um BD.**
+- Backup é uma cópia de segurança de dados que pode ser utilizada para realizar REstauração em caso de perda ou corrupção dos dados originais.
+- Importante não apenas no contexto de BD, mas para toda e qualquer forma de armazenamento de dados / arquivos.
+- Deve ser realizado periodicamente, e o melhor cenário é nunca precisar realizar a restauração.
+
+## 9. DER
+
+- **Diagrama Entidade-Relacionamento.**
+- Diagrama de modelagem de dados que **permite visualizar a interação entre entidades (tabelas), atributos (colunas) e seus relacionamentos.**
+- Derivador do MER, ajuda no processo de implementação do BD, sendo um artefato importante para a criação de um modelo físico.
+- Pode ser criado com ferramentas específicas como **ERWin, Astah, Visual Paradigm, LucidChart** ou mesmo "na unha".
+
+## 10. Bancos Não-Relacionais
+
+- **No-SQL** - Classe de sistemas de bancos de dados que incorporam outras formas de consultas distintas do SQL tradicional, e que não utilizam estruturas relacionais tradicionais.
+EX:
+  - MongoDB
+  - Cassandra
+  - HBase
+  - Neo4j
+  - Redis
+
+***
+
+## Fonte
+
+- Fábio dos Reis, Bóson Treinamentos - [https://youtu.be/2E7crqRI1iE]
