@@ -2,4 +2,6 @@
 
 ## Dia 1
 
-- Conhecendo conceitos básicos;
+- Teoria e conceitos básicos do banco de Dados;
+- Conceitos SQL;
+- Conhecendo o SQL Server;

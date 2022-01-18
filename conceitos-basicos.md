@@ -1,12 +1,27 @@
-# 10 CONCEITOS BÁSICOS DE BANCO DE DADOS
+# CONCEITOS DE BANCO DE DADOS
 
-## 1. Definição de banco de dados
+## Dado
 
-- Coleção organizada de dados, armazenados em meio eletrônico e que se relacionam de alguma forma, permitindo efetuar consultas que retornam os dados armazenados, de diversas maneiras distintas.
+- **Fato do mundo real** que está registrado.
+Ex: Endereço, Data.
+
+## Informação
+
+- **Fato útil** que pode ser extraído **direta ou indiretamente** a partir dos dados.
+EX: Endereço de entrega, Idade.
+
+## Banco de dados (DB - Database ou BD Banco de dados)
+
+- **Coleção organizada de dados, inter-relacionados e persistentes** que representa um subconjunto dos fatos presente em um domínio de aplicação (universo de discurso), onde são armazenados em meio eletrônico, permitindo efetuar consultas que retornam os dados armazenados, de diversas maneiras distintas.
 - Arquivo(s) armazenado(s) em algum meio, gerenciado por algum sistema específico de software, e utilizado por aplicações que acessam os dados armazenados.
 - O mesmo que **base de dados (Database)**
+- Banco de dados = instância de dado + meta-dados.
+  - *Instância de dados* = Dado propriamente.
+  - *Meta-dados* = Dicionário de dados
+    - Esquema da base de dados;
+    - Acessado através de linguagens de definição de dados;
 
-## 2. SGBD
+## SGBD
 
 - **Sistema de Gerenciamento e Banco de Dados.**
 - Conjunto de softwares e ferramentas que faz a interação entre aplicações, usuários e banco de dados.
@@ -16,9 +31,9 @@
   - Oracle Database;
   - MySQL Server;
   - Microsoft SQL Server;
-  - IBM DB2;
+  - IBM DB2.
 
-## 3. Importância da Modelagem de dados
+## Modelagem de dados
 
 - **Processo crucial no projeto de um banco de dados.**
 - Permite determinar as tabelas com seus atributos e relacionamentos que comporão o BD (Banco de Dados).
@@ -26,7 +41,7 @@
 - Aplicar regras de negócios de acordo com a real necessidade do cliente.
 - Evita problemas futuros com retrabalho e eventual perda de dados.
 
-## 4. Tabelas, linhas e colunas
+## Tabelas, linhas e colunas
 
 - **Coluna:** Domínio de valores de um tipo específico (definição técnica).  
 É uma informação que você quer armazenar no banco de dados.  
@@ -37,7 +52,7 @@ EX: Nome_Prod, Nome_Cliente, Valor_Prod, Endereco.
 
 ![Exemplo](./img/exemplo-tabela.png)
 
-## 5. SQL - Structured Query Language
+## SQL - Structured Query Language
 
 - **Linguagem de Consulta Estruturada.**
 - Usada para realizar a comunicação com um banco de dados.
@@ -47,9 +62,9 @@ EX: Nome_Prod, Nome_Cliente, Valor_Prod, Endereco.
   - Atualizar informações;
   - Excluir dados de dados;
   - Consultar informações armazenadas de dados;
-  - Gerenciar permissões e segurança;
+  - Gerenciar permissões e segurança.
 
-## 6. Chave
+## Chave
 
 - Uma ou mais colunas de uma relação cujos valores são usados para identificar de forma exclusiva uma linha ou conjunto de linhas.
 - Pode ser:
@@ -62,21 +77,21 @@ EX: Nome_Prod, Nome_Cliente, Valor_Prod, Endereco.
 
 ![Exemplo](./img/exemplo-chaves.png)
 
-## 7. Índices
+## Índices
 
 - Estrutura de dados empregada para **otimizar a seleção de um conjunto específico de colunas** em um banco de dados relacional.
 - Uma das ferramentas de otimização mais conhecidas e utilizadas pelos desenvolvedores de bancos de dados.
 - Indexação em tabelas **pode aumentar significativamente a performance em consultas** ao banco de dados.
 - Porém, **pode diminuir a velocidade de transações** como *inserts* e *updates*.
 
-## 8. Backup e Restauração
+## Backup e Restauração
 
 - **Operações de extrema importância em um BD.**
 - Backup é uma cópia de segurança de dados que pode ser utilizada para realizar REstauração em caso de perda ou corrupção dos dados originais.
 - Importante não apenas no contexto de BD, mas para toda e qualquer forma de armazenamento de dados / arquivos.
 - Deve ser realizado periodicamente, e o melhor cenário é nunca precisar realizar a restauração.
 
-## 9. DER
+## DER
 
 - **Diagrama Entidade-Relacionamento.**
 - Diagrama de modelagem de dados que **permite visualizar a interação entre entidades (tabelas), atributos (colunas) e seus relacionamentos.**
@@ -85,17 +100,18 @@ EX: Nome_Prod, Nome_Cliente, Valor_Prod, Endereco.
 
 ![Exemplo](./img/exemplo-der.png)
 
-## 10. Bancos Não-Relacionais
+## Bancos Não-Relacionais
 
-- **No-SQL** - Classe de sistemas de bancos de dados que incorporam outras formas de consultas distintas do SQL tradicional, e que não utilizam estruturas relacionais tradicionais.
+- **No-SQL - Not Only** - Classe de sistemas de bancos de dados que incorporam outras formas de consultas distintas do SQL tradicional, e que não utilizam estruturas relacionais tradicionais.
 - Geralmente são usados quando se tem volumes de dados muito grandes, como BigDatas.
 EX:
-  - MongoDB
-  - Cassandra
-  - HBase
-  - Neo4j
-  - Redis
+  - MongoDB;
+  - Cassandra;
+  - HBase;
+  - Neo4j;
+  - Redis.
 
-## Fonte
+## Referências
 
 - Fábio dos Reis, Bóson Treinamentos - [https://youtu.be/2E7crqRI1iE]
+- Vania Bogorny - UFSC - [https://www.inf.ufsc.br/~alexandre.goncalves.silva/courses/15s1/ine5223/slides/aula0602.pdf]
