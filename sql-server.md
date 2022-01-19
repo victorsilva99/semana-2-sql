@@ -1,6 +1,6 @@
 # MICROSOFT SQL SERVER
 
-Criado pela Microsoft, esse SGBD foi lançado originalmente em 1988, em uma parceria com a empresa Sybase. Na época, funcionava exclusivamente em equipamentos com o sistema operacional OS/2. A partir de 1994, foi disponibilizada uma versão para Windows, o que ajudou a popularizar e sedimentar o produto no mercado. Ele é um gerenciador de bancos de dados relacional, ou seja, as informações manipuladas estão armazenadas em campos de tabelas, por exemplo, uma tabela de clientes, em que cada linha contém os registros de nome, endereço e estado civil. São estruturas como essa que o banco controla.
+Criado pela Microsoft, esse SGBD foi lançado originalmente em 1988, em uma parceria com a empresa Sybase usando a linguagem de programação T-SQL. Na época, funcionava exclusivamente em equipamentos com o sistema operacional OS/2. A partir de 1994, foi disponibilizada uma versão para Windows, o que ajudou a popularizar e sedimentar o produto no mercado. Ele é um gerenciador de bancos de dados relacional, ou seja, as informações manipuladas estão armazenadas em campos de tabelas, por exemplo, uma tabela de clientes, em que cada linha contém os registros de nome, endereço e estado civil. São estruturas como essa que o banco controla.
 
 ## Principais características
 
@@ -28,3 +28,4 @@ Criado pela Microsoft, esse SGBD foi lançado originalmente em 1988, em uma parc
 
 - Blog Impacta - [https://www.impacta.com.br/blog/entenda-de-uma-vez-por-todas-o-banco-de-dados-sql-server/]
 - O que é um banco de dados? - Curso em Vídeo - [https://youtu.be/Ofktsne-utM]
+- OPServices, Diferença entre banco de dados - [https://www.opservices.com.br/banco-de-dados/]

@@ -21,20 +21,23 @@ EX: Endereço de entrega, Idade.
     - Esquema da base de dados;
     - Acessado através de linguagens de definição de dados;
 
-## SGBD / DMS
+## SGBD / DBMS
 
-- **Sistema de Gerenciamento e Banco de Dados.**
-- **Database Management System.**
+- **Sistema de Gerenciamento e Banco de Dados / DataBase Management System.**
 - Conjunto de softwares e ferramentas que permite o acesso, criação e gerência da base de dados, além de fazer a interação entre aplicações, usuários e banco de dados.
 - Permite realizar consultas e enviar comandos ao BD.
 - São projetados para gerenciar grandes grupos de informações;
 - Têm o poder de garantir a **Integridade dos dados** mesmo com vários usuários realizando alterações, além de conseguir isolar usuários dos detalhes mais internos do banco de dados, a chamada **abstração de dados**, que é um dos principais objetivos do sistema;
 - **NÃO** é o banco de dados em si, mas um sistema de acesso.
-- Exemplos:
+- Existem os softwares relacionais (RDBMS - Relational DataBase Management System):
   - Oracle Database;
   - MySQL Server;
   - Microsoft SQL Server;
   - IBM DB2.
+- e os não relacionais, que trabalham com NoSQL (DBMS - DataBase Management System)
+  - MongoDB
+  - Redis
+  - Cassandra
 - Já a sua arquitetura consiste em (respectivamente):
   - Interface;
   - Processamento de consultas;
@@ -43,18 +46,17 @@ EX: Endereço de entrega, Idade.
   - Base de dados;
 - **Instância**: Coleção de informações armazenadas (mudam com frequência);
 - **Esquema**: Projeto geral do banco de dados (não mudam com frequência);
-  - **Independência dos dados**: É a modificação do esquema dos dados em um nível sem afetar a definição do esquema em um nível mais alto.
-  ![Exemplo](./img/independencia-dados.png)
-  Existem 2 tipos de independência:
-    - *Física de dados*: Habilidade de modificar o esquema físico sem a necessidade de reescrever os programa aplicativo. Estas modificações são necessárias para melhorar o desempenho;
-    - *Lógica de dados*: Habilidade de modificar o esquema conceitual sem a necessidade de reescrever os programas aplicativos. Estas modificações são necessárias quando a estrutura lógica é alterada. EX: adição de um novo atributo. Ela é a mais difícil de ser alcançada, pois os programas são bastante dependentes de estrutura lógica dos dados que eles acessam.
-
+  - **Independência dos dados**: É a modificação do esquema dos dados em um nível sem afetar a definição do esquema em um nível mais alto.  
+![Exemplo](./img/independencia-dados.png)  
+- Existem 2 tipos de independência:
+  - *Física de dados*: Habilidade de modificar o esquema físico sem a necessidade de reescrever os programa aplicativo. Estas modificações são necessárias para melhorar o desempenho;
+  - *Lógica de dados*: Habilidade de modificar o esquema conceitual sem a necessidade de reescrever os programas aplicativos. Estas modificações são necessárias quando a estrutura lógica é alterada. EX: adição de um novo atributo. Ela é a mais difícil de ser alcançada, pois os programas são bastante dependentes de estrutura lógica dos dados que eles acessam.
 - **Tipos de Usuários**:
   - *Programadores de aplicativos*: São os usuários que escrevem os programas de aplicação através da DML;
   - *Usuários de alto nível*:  Interagem com o sistema sem escrever programas;
   - *Usuários especializados (especialistas)*: Escrevem aplicativos especializados como sistemas especialistas;
   - *Usuários ingênuos*: Interagem com o sistema invocando os programas aplicativos;
-  - *Administrador do banco de dados*: Tem o controle central dos dados e dos programas de acesso aos dados;
+  - *Administrador do banco de dados (DBA - DataBase Administrator)*: Tem o controle central dos dados e dos programas de acesso aos dados;
     - Funções do Administrador do banco de dados:
       - Definição do esquema;
       - Definição de estruturas de armazenamento e métodos de acesso;
@@ -80,18 +82,6 @@ EX: Nome_Prod, Nome_Cliente, Valor_Prod, Endereco.
 - **Tabela:** Resultado do cruzamento de linhas e colunas. É uma coleção de **linhas (registros)** em um banco de dados relacional, que armazena dados referentes a uma **entidade (assunto)** em particular.  
 
 ![Exemplo](./img/exemplo-tabela.png)
-
-## SQL - Structured Query Language
-
-- **Linguagem de Consulta Estruturada.**
-- Usada para realizar a comunicação com um banco de dados.
-- Padrão em bancos de dados relacionais.
-- Permite efetuar tarefas como:
-  - Inserir registros;
-  - Atualizar informações;
-  - Excluir dados de dados;
-  - Consultar informações armazenadas de dados;
-  - Gerenciar permissões e segurança.
 
 ## Chave
 
@@ -169,8 +159,9 @@ EX: Nome_Prod, Nome_Cliente, Valor_Prod, Endereco.
 
 ## Bancos Não-Relacionais
 
-- **No-SQL - Not Only** - Classe de sistemas de bancos de dados que incorporam outras formas de consultas distintas do SQL tradicional, e que não utilizam estruturas relacionais tradicionais.
+- **NoSQL - Not Only SQL** - Classe de sistemas de bancos de dados que incorporam outras formas de consultas distintas do SQL tradicional, e que não utilizam estruturas relacionais tradicionais.
 - Geralmente são usados quando se tem volumes de dados muito grandes, como BigDatas.
+- Buscam consistência nas informações armazenadas, disponibilidade do banco de dados e tolerância ao particionamento das informações.
 EX:
   - MongoDB;
   - Cassandra;
@@ -195,11 +186,6 @@ EX:
   - **Nível lógico** – O próximo nível de abstração, descreve quais dados estão armazenados no banco de dados e quais relações existem entre eles.
   - **Nível de visão** – A abstração mais alta, descreve apenas parte do banco de dados.
 
-## DDL
-
-- **Data Definition Language** = Linguagem de definição de dados.
-- Ela representa um conjunto de definições na qual um banco de dados é especificado.
-
 ## DML
 
 - **Data Manipulation Language** = Linguagem de manipulação de dados.
@@ -212,7 +198,6 @@ EX:
 - Existem 2 formas de manipular os dados:
   - *Procedural*: O usuário informa qual dado deseja acessar e como obtê-lo.
   - *Não-procedural (declarativa)*: O usuário informa qual dado deseja acessar SEM especificar como obtê-lo. Esse é o caso da linguagem SQL.
-
 
 ## Eco-sistema do Banco de Dados
 
@@ -231,6 +216,51 @@ EX:
 - Otimizador de Consultas
   - Escolhe a forma mais eficiente para execução de uma consulta;
 
+## Views
+
+- As views(visões), também são chamados de **tabelas virtuais** ou **derivadas**;
+- Os dados nessas tabelas virtuais são derivados de tabelas de base de dados ou views previamente definidas;
+- Há possíveis limitações nas operações de atualização que podem ser aplicadas à views, mas não existe quaisquer limitações sobre a consulta de uma view.
+- Ela é criada quando:
+  - Precisamos referenciar determinada(s) tabela(s) com frequência; ou
+  - Quando precisamos realizar consultas complexas;
+- **Vantagens**:
+  - Controle sobre o que o usuário pode ver;
+  - Simplifica a consulta;
+  - Segurança;
+  - Exportação de dados;
+
+## Stored Procedures / Procedimentos Armazenados
+
+- São um conjunto de declarações SQL armazenadas no servidor.
+- Eles são utilizados quando:
+  - Aplicações clientes são escritas em diferentes linguagens ou trabalham em diferentes plataformas, mas precisam executar as mesas operações de banco de dados;
+  - Segurança é primordial. Bancos, por exemplo, utilizam funções e procedimentos armazenados para tordas as operações comuns. Isso provê consistência e segurança, pois cada operação é devidamente registrada.
+- Rotinas armazenadas podem fornecer melhor desempenho pois menos informações precisam ser enviadas entre o cliente e o servidor;
+- A desvantagem é que aumenta-se a carga no servidor de banco de dados;
+- Permitem a criação de uma biblioteca de funções no servidor de banco de dados;
+
+## Triggers / Gatilhos
+
+- É um objeto do banco de dados que está associado a uma tabela, e é ativado quando um evento particular ocorre na tabela;
+- Principais usos são:
+  - Executar verificações de valores; ou
+  - Fazer cálculos sobre os valores informados em uma atualização;
+- Ele é ativado quando uma declaração INSERT, UPDATE ou DELETE ocorre na tabela associada;
+- O disparo do "gatilho" pode ser configurado para ocorrer antes ou depois do evento de disparo.
+
+## Data Types
+
+- Cada SGBD tem independencia para criar seus próprios data types, porém os tipos padrões são respeitados:
+  - Integer (int)
+  - Char
+  - Long
+  - Float
+  - DateTime
+  - Binary
+
+- No caso do SQL Server, ele tem tipos de dados para tratar XML e imagens também.
+
 ## Referências
 
 - Fábio dos Reis, Bóson Treinamentos - [https://youtu.be/2E7crqRI1iE]
@@ -238,3 +268,6 @@ EX:
 - Estratégia Concursos - [https://www.estrategiaconcursos.com.br/blog/conceitos-basicos-de-banco-de-dados/]
 - Andre Cortes - Remessa Online, MER e DER, o que são? - [encurtador.com.br/drxQ4]
 - Danielle Oliveira - Alura, MER e DER - [https://www.alura.com.br/artigos/mer-e-der-funcoes]
+- OPServices, Diferença entre banco de dados - [https://www.opservices.com.br/banco-de-dados/]
+- Daniel Maia, Utilizando views, stored procedures e triggers - [https://pt.slideshare.net/maiamg/utilizando-views-stored-procedures-e-triggers]
+- Código Fonte TV, SQL // Dicionário do Programador - [https://youtu.be/kMznyI7r2Tc]
