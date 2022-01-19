@@ -20,7 +20,16 @@
 
 ### DML / LMD: Data Manipulation Language
 
-- Linguagem de manipulação de dados;
+- Linguagem de manipulação de dados.
+- A manipulação dos dados significa:
+  - A busca da informação armazenada no BD.
+  - A inserção de novas informações no BD.
+  - A eliminação de informações do BD.
+  - A modificação dos dados armazenados no BD.
+- No nível físico, precisamos definir algoritmos que permitam acesso eficiente aos dados.
+- Existem 2 formas de manipular os dados:
+  - *Procedural*: O usuário informa qual dado deseja acessar e como obtê-lo.
+  - *Não-procedural (declarativa)*: O usuário informa qual dado deseja acessar SEM especificar como obtê-lo. Esse é o caso da linguagem SQL.
 - Comandos DML são comandos que tratam do conteúdo dos dados. Eles alteram as informações em um banco de dados SQL. Seus comandos mais usados, são:
   - SELECT;
   - INSERT;

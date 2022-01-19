@@ -110,19 +110,6 @@ EX: Nome_Prod, Nome_Cliente, Valor_Prod, Endereco.
 - Importante não apenas no contexto de BD, mas para toda e qualquer forma de armazenamento de dados / arquivos.
 - Deve ser realizado periodicamente, e o melhor cenário é nunca precisar realizar a restauração.
 
-## Modelos de Dados
-
-- É uma coleção de ferramentas conceituais para a descrição de dados, relacionamentos, semântica de dados e restrições de consistência.
-- Divido em duas formar:
-  - **Conceitual**:
-    - Entidade-Relacionamento (ER);
-    - Orientado a Objetos (OO);
-  - **Lógicos**:
-    - Redes;        // Modelos antigos
-    - Hierárquicos; // dificilmente são utilizados.
-    - Orientado a Objetos.
-    - *Relacional* - diferente dos outros modelos, ele não usa ponteiros ou ligações, e relaciona registros a partir de valores do registro.
-
 ## MER / ERM
 
 - **Modelo Entidade-Relacionamento / Entity–Relationship Model**
@@ -185,19 +172,6 @@ EX:
   - **Nível físico** – Nível de abstração mais baixo, descreve como os dados são armazenados.
   - **Nível lógico** – O próximo nível de abstração, descreve quais dados estão armazenados no banco de dados e quais relações existem entre eles.
   - **Nível de visão** – A abstração mais alta, descreve apenas parte do banco de dados.
-
-## DML
-
-- **Data Manipulation Language** = Linguagem de manipulação de dados.
-- A manipulação dos dados significa:
-  - A busca da informação armazenada no BD.
-  - A inserção de novas informações no BD.
-  - A eliminação de informações do BD.
-  - A modificação dos dados armazenados no BD.
-- No nível físico, precisamos definir algoritmos que permitam acesso eficiente aos dados.
-- Existem 2 formas de manipular os dados:
-  - *Procedural*: O usuário informa qual dado deseja acessar e como obtê-lo.
-  - *Não-procedural (declarativa)*: O usuário informa qual dado deseja acessar SEM especificar como obtê-lo. Esse é o caso da linguagem SQL.
 
 ## Eco-sistema do Banco de Dados
 
