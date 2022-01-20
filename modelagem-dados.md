@@ -79,6 +79,116 @@ O acesso aos dados é sempre unidirecional, a partir do pai ao filho.
 
 - **Modelo Orientado a Objeto (BDOO)**: Armazenar objetos compartilhados entre diferentes aplicações. Estes meios de armazenamento se tornaram conhecidos com o crescente uso de linguagens Orientada a Objetos. Esse modelo parte de uma premissa simples: o que se persiste são os objetos e, portanto, o seu “estado”, representado pelos atributos. Os atributos seriam equivalentes aos campos – ou colunas – de uma tabela. Já as associações entre objetos (atributos que referenciam outros objetos) podem ser comparadas aos relacionamentos, criados como restrições de integridade referencial (“chaves estrangeiras”). Assim, o correspondente a uma “tabela-filha” em um BDOO seria um atributo que tenha como valor outro objeto.
 
+## Análise de requisitos
+
+- Nesta fase, são realizadas reuniões para coleta de informações, que analisam o que é exigido para o banco de dados a ser criado.
+- Os processos de negócio são definidos, e as entidades, atributos e relacionamentos do BD são documentadas.
+- A Análise é extremamente importante para o sucesso do projeto do BD.
+
+## MER / ERM
+
+- **Modelo Entidade-Relacionamento / Entity–Relationship Model**
+- Criado pelo Dr. Peter Chen, em 1976.
+- Trata-se de um modelo conceitual usado para descrever objetos envolvidos no domínio de um sistema a ser construído, incluindo seus atributos e relacionamentos. O MER permite representar de forma abstrata a estrutura que irá construir o banco de dados.
+- São diagramas utilizados para projetar Bancos de Dados Relacionais, utilizando como base a relação de objetos reais, e sendo representado por meio de **entidades** e relacionamentos. Criados a partir das especificações do negócio ou narrativas do usuário. Nele ilustramos como os dados são estruturados nos processo de negócios ou para detalhar como os dados são armazenados nos bancos de dados relacionais, além de ilustrar as entidades em um negócio e também relacionamentos entre elas.
+Construímos o MER durante a fase de análise no ciclo de vida de desenvolvimento do sistema.
+Um MER separa a informação necessária ao negócio das atividades que são realizada no negócio, ou seja, num exemplo de uma loja, o MER irá me auxiliar a saber quais serão os dados serão armazenados das vendas, da loja e do cliente e como esses itens irão se relacionar. Esse modelo é posteriormente refinado com o uso de técnicas específicas, e finalmente implementado em um banco de dados físico.
+- Um modelo entidade relacionamento é uma maneira sistemática de descrever e definir um processo de negócio. O processo é modelado como componentes (entidades) que são ligadas umas às outras por relacionamentos que indicam as dependências entre elas.
+As entidades podem ter várias propriedades (atributos) que se caracterizam.
+Diagramas são criados para representar graficamente entidades, atributos e relacionamentos, denominados Diagrama Entidade-Relacionamento (DER).
+- **Modelo** ER (MER): Lista de entidades, atributos e relacionamentos, que traz informações sobre tipos de dados, restrições, descrições de entidades e outras.
+- **Diagrama** ER (DER) Representação gráfica associada ao MER (ou parte dele).
+
+### Entidades
+
+As entidades representam um objeto do mundo real e que possuem uma existência independente, como: pessoas, empresa, carro, casa, entre outras coisas que podem ser representadas por uma entidade. Seria algo de importância para um usuário ou organização, algo significativo, sobre o qual devemos possuir informações e que precisa ser representado em um banco de Dados.
+Representa um tem, tópico ou conceito de negócio.
+Uma entidade pode ter existência física ou abstrata.
+Nomeamos as entidades usando substantivos que presentam de forma clara e objetiva sua função.
+
+Cada objeto/ocorrência de uma entidade é denominado de:
+
+**Instância de Entidade**: Uma entidade em si é um descrição da estrutura e forma das ocorrências da entidade, como uma "Receita", ou "planta".
+Uma instância de entidade é uma ocorrência específica de uma entidade;
+
+![exemplo](.img/instancia-entidade.png)
+
+**Regras de Nomeação (Boas práticas)**:
+
+- Colocar os nomes das entidades no singular, mesmo que ela represente varias ocorrências;
+- Devem começar com uma letra;
+- Não podem ter espaços ou alguns caracteres especiais;
+- Os caracteres permitidos são ($, #, _)
+- Os nomes de colunas devem ser únicos dentro de uma tabela;
+- Os nomes de entidades/  tabelas devem ser únicos dentro do esquema;
+
+Ex: Cliente, Empregado, Livro, Venda, Produto;
+
+Existem três tipos de entidades:
+
+- **Fortes**: Não dependem de outras entidades para existirem;
+- **Fracas**: Dependem de outras entidades para existir, ou seja, elas não possuem existência própria ou não possuem atributos próprios para identificação, dependendo assim, dos atributos chave das entidades fortes;
+- **Associativas**: são utilizadas quando existe a necessidade de associar uma entidade a um relacionamento;
+
+### Atributos
+
+Os atributos descrevem as propriedades/características das entidades. A entidade pessoa pode ter como atributo o nome, data de nascimento, idade, endereço. Seria algo que descreve ou qualifica uma entidade, com eles podendo ser obrigatórios ou não. Os atributos possuem um tipo de dados (domínio) nome e valor específico. Ex. telefone do cliente, endereço do cliente. Podem ser chamados também de **campos** ou **colunas**. Existem 5 tipos de atributos:
+
+- **Simples/ Atômico**: São indivisíveis, ou seja, são atributos atômicos, que não possuem características especiais. Um exemplo seria o atributo CPF, ele não pode ser dividido em partes menores para formar outros atributos, ele é indivisível.
+- **Composto**: Podem ser divididos em partes menores, que representam outros atributos, como o atributo endereço, ele pode ser subdividido em atributos menores, como cidade, estado, rua, CEP. Por esse motivo, não é ideal armazenar o atributo composto inteiro, pois isso dificultará ao se fazer buscas especificais;
+- **Multivalorado**: Pode ter um ou N (vários) valores associados a ele, ou seja, conter mais de um valor para um mesmo registro. Por exemplo, o atributo telefone de um cliente, pois o cliente pode ter vários telefones.
+- **Derivado**: Dependem de outro atributo ou até mesmo outra entidade para existir, como, por exemplo, o atributo idade e o atributo data de nascimento, para descobrimos a idade de uma pessoa precisamos da sua data de nascimento, então, consideramos o atributo idade como derivado do atributo data de nascimento. No diagrama o Multivalorado **recebe um * antes do seu nome**
+- **Determinante**: É utilizado para identificar de forma única uma entidade, ou seja, os valores associados a esse atributo são distintos dentre o conjunto de entidades. Como exemplo, podemos utilizar o CPF de uma pessoa, ele é único e pode ser utilizado como atributo determinante, já que cada pessoa recebe um número de CPF distinto (PK - Primary Key). No diagrama entidade-relacionamento costumamos deixar o **atributo determinante sublinhado**.
+- **Identificador/Chave**: Identifica uma instância específica na classe de entidade; Se diferenciam dos determinantes pois podem ser repetidos dependendo da situação. Esses atributos podem ser:
+  - *Únicos*: O valor dos dados da chave é único na entidade;
+  - *Não-única* - Usada para agrupar instâncias de classe em categorias (FK - Foreign Key).
+  - *Compostas* - As chaves podem ser compostas, consistindo de dois ou mais atributos combinados.
+
+### Relacionamento
+
+Ligação entre dois atributos, de duas ou mais tabelas.
+As entidades podem ser conectadas entre si por meio de Relacionamentos. Trata-se de uma estrutura que indica a associação de elementos de uma ou mais entidades.
+São o relacionamento entre entidades, criando assim uma associação, que normalmente são representados por verbos. Essa relação é um conjunto de registros (tuplas) que representam um modelo de uma entidade. Cada registro representa uma instância de entidade, e o conjunto de todas as instâncias, com seus atributos, é chamado de Relação.
+Também conhecida com uma tabela bidimensional com características específicas, composta por linhas e colunas, criada a partir de uma entidade.
+Exemplo: "uma pessoa trabalha para uma empresa". Seria uma associação nomeada entre entidades, com um grau de associação. Ex: O cliente pode estar associado a um pedido.
+
+- Características de uma relação:
+  - Linhas contém dados sobre instâncias de uma entidade (registros);
+  - Colunas contém dados sobre atributos da entidade (campos)
+  - Cada célula (onde são escritos os dados) da tabela armazena um único valor;
+  - Todos os valores e uma coluna são do mesmo tipo (domínio dos dados);
+  - Não há duas linhas idênticas;
+  - As relações geralmente geram tabelas no banco;
+
+> Toda relação é uma tabela, mas nem toda tabela é uma relação.
+
+**Porque precisamos de relacionamentos?**
+
+- Como os dados de diferentes entidades são armazenados em tabelas distintas, geralmente precisamos combinar duas ou mais tabelas para responder ás perguntas específicas de usuários. Por exemplo, podemos querer saber quais produtos, e em qual quantidade, foram adquiridos por um cliente em particular, Precisamos então de dados das tabelas de clientes, de pedidos e de produtos para obter essa informação.
+
+### Grau de um relacionamento
+
+- Define o número de entidades que participam do relacionamento, podendo ser (sucessivamente):
+  - **Unário** - Quando uma entidade se relaciona com ela mesma.
+  ![exemplo](.img/relacionamento-unario.png)  
+  - **Binário** - Quando há relacionamento entre duas entidades, é o caso mais comum.
+  ![exemplo](.img/relacionamento-binario.png)  
+  - **Ternário** - Quando há relacionamento entre três entidades;
+  ![exemplo](.img/relacionamento-ternario.png)
+
+- Cada linha de dados em uma tabela deve ser identificada de forma única usando-se uma **Chave Primária** (identificador exclusivo).
+- Usamos uma **Chave Estrangeira** para relacionar os dados entre múltiplas tabelas.
+- Usamos para isso o relacionamento entre chave primária de uma tabela com a chave estrangeira de outras tabelas.
+
+### Cardinalidade
+
+- Expressa o número de entidades que a outra entidade pode ser associada, sendo classificada por 3 tipos:
+  - *UM PARA UM (1:1)*: Onde uma entidade X se associa unicamente a uma ocorrência da entidade Y; (EX: Time - Técnico)
+  - *UM PARA MUITOS (1:N - N:1)*: Onde uma entidade X se associa a várias ocorrências da entidade Y, porém, a entidade Y pode apenas se associar a uma ocorrência da entidade X; (EX: Cliente - Carro)
+  - *MUITOS PARA MUITOS (N:N)*: Onde a entidade X o pode se associar a várias ocorrências da entidade Y e a entidade Y pode também se associar a várias ocorrências da entidade X; (EX: Paciente - Médico)
+
+  ![Exemplo](./img/exemplo-mer.png)
+
 ## Chaves
 
 - Uma ou mais colunas de uma relação cujos valores são usados para identificar de forma exclusiva uma linha ou conjunto de linhas.
@@ -100,12 +210,6 @@ O acesso aos dados é sempre unidirecional, a partir do pai ao filho.
 
 ![Exemplo](./img/exemplo-chaves.png)
 
-## Análise de requisitos
-
-- Nesta fase, são realizadas reuniões para coleta de informações, que analisam o que é exigido para o banco de dados a ser criado.
-- Os processos de negócio são definidos, e as entidades, atributos e relacionamentos do BD são documentadas.
-- A Análise é extremamente importante para o sucesso do projeto do BD.
-
 ## DER / ERD
 
 - **Diagrama Entidade-Relacionamento / Entity–Relationship Model**
@@ -115,36 +219,14 @@ O acesso aos dados é sempre unidirecional, a partir do pai ao filho.
 - Em sua representação ele pode ter:
   - *Retângulo* = Entidade;
   - *Losango* = Relacionamento;
-  - *Elipse* = atributo;
+  - *Elipse* = atributo, porém podemos representa-lo também apenas pelo nome, sem a elipse;
+  - *Linhas* = Ligam atributos a entidades e entidades a relacionamentos;
+  - *Linhas duplas* = ;
+  - *Retângulos duplos*= ;
+  - *subatributos* = ;
+  - *Triângulos* = ;
 
 ![Exemplo](./img/exemplo-der.png)
-
-## MER / ERM
-
-- **Modelo Entidade-Relacionamento / Entity–Relationship Model**
-- São diagramas utilizados para projetar Bancos de Dados Relacionais, utilizando como base a relação de objetos reais, e sendo representado por meio de **entidades** e relacionamentos. Criados a partir das especificações do negócio ou narrativas do usuário. Nele ilustramos como os dados são estruturados nos processo de negócios ou para detalhar como os dados são armazenados nos bancos de dados relacionais, além de ilustrar as entidades em um negócio e também relacionamentos entre elas.
-Construímos o MER durante a fase de análise no ciclo de vida de desenvolvimento do sistema.
-Um MER separa a informação necessária ao negócio das atividades que são realizada no negócio, ou seja, num exemplo de uma loja, o MER irá me auxiliar a saber quais serão os dados serão armazenados das vendas, da loja e do cliente e como esses itens irão se relacionar. Esse modelo é posteriormente refinado com o uso de técnicoas específicas, e finalmente implementado em um banco de dados físico.
-- **Entidades**: As entidades representam um objeto do mundo real e que possuem uma existência independente, como: pessoas, empresa, carro, casa, entre outras coisas que podem ser representadas por uma entidade. Seria algo significativo, sobre o qual devemos possuir informações. Ex: Cliente. Existem três tipos de entidades:
-  - *Fortes*: Não dependem de outras entidades para existirem;
-  - *Fracas*: Dependem de outras entidades para existir, ou seja, elas não possuem existência própria ou não possuem atributos próprios para identificação, dependendo assim, dos atributos chave das entidades fortes;
-  - *Associativas*: são utilizadas quando existe a necessidade de associar uma entidade a um relacionamento;
-- **Atributos**: Os atributos descrevem as propriedades das entidades. A entidade pessoa pode ter como atributo o nome, data de nascimento, idade, endereço. Seria algo que descreve ou qualifica uma entidade, com eles podendo ser obrigatórios ou não. Ex. telefone do cliente, endereço do cliente. Existem 5 tipos de atributos:
-  - *Simples*: São indivisíveis, ou seja, são atributos atômicos, um exemplo seria o atributo CPF, ele não pode ser dividido em partes menores para formar outros atributos, ele é indivisível.
-  - *Composto*: Podem ser divididos em partes menores, que representam outros atributos, como o atributo endereço, ele pode ser subdividido em atributos menores, como, por exemplo, cidade, estado, rua, CEP.
-  - *Multivalorado*: Pode ter um ou N (vários) valores associados a ele, como, por exemplo, o atributo telefone de um cliente, ele pode ter um ou vários telefones.
-  - *Derivado*: Dependem de outro atributo ou até mesmo outra entidade para existir, como, por exemplo, o atributo idade e o atributo data de nascimento, para descobrimos a idade de uma pessoa precisamos da sua data de nascimento, então, consideramos o atributo idade como derivado do atributo data de nascimento.
-  - *Chave*: É utilizado para identificar de forma única uma entidade, ou seja, os valores associados a esse atributo são distintos dentre o conjunto de entidades. Como exemplo, podemos utilizar o CPF de uma pessoa, ele é único e pode ser utilizado como atributo chave, já que cada pessoa recebe um número de CPF distinto.
-- **Relacionamento**: São o relacionamento entre entidades, criando assim uma associação, que normalmente são representados por verbos. Exemplo: "uma pessoa trabalha para uma empresa". Seria uma associação nomeada entre entidades, com um grau de associação. Ex: O cliente pode estar associado a um pedido. 
-
-## Cardinalidade
-
-- Expressa o número de entidades que a outra entidade pode ser associada, sendo classificada por 3 tipos:
-  - *UM PARA UM (1:1)*: Onde uma entidade X se associa unicamente a uma ocorrência da entidade Y; (EX: Time - Técnico)
-  - *UM PARA MUITOS (1:N - N:1)*: Onde uma entidade X se associa a várias ocorrências da entidade Y, porém, a entidade Y pode apenas se associar a uma ocorrência da entidade X; (EX: Cliente - Carro)
-  - *MUITOS PARA MUITOS (N:N)*: Onde a entidade X o pode se associar a várias ocorrências da entidade Y e a entidade Y pode também se associar a várias ocorrências da entidade X; (EX: Paciente - Médico)
-
-  ![Exemplo](./img/exemplo-mer.png)
 
 ## Convenções para modelagem de entidades, relacionamentos e atributos
 
@@ -153,7 +235,6 @@ Não são regras gerais ou obrigatórios, porém é legal conhece-los pois são 
 - **Entidades**: Nome único, singular; em caixa alta (Maiúsculos);
 - **Atributos**: nome no singular; caixa baixa(minusculo); Atributos obrigatórios marcados com *; identificador único marcado com #;
 - **Relacionamentos**: nome identificador (verbo); opcionalidade ("deve ser" ou "pode ser"); grau ou carnalidade;
-
 
 ## Identificador Único (UID)
 
@@ -177,7 +258,7 @@ Dados necessários: nome do produto, categoria de produto (limpeza, higiene, etc
 - Neste nível o projeto é independente de SGBD.
 - Consiste na especificação lógica dos dados em um formato adequado ao SGBD escolhido. Os tipos de dados são completamente definidos.
 
-[Exemplo](.img/modelo-logico.png)
+![Exemplo](.img/modelo-logico.png)
 
 ### Nível de visão/ conceitual (alto nível) - MCD
 
@@ -187,7 +268,7 @@ Dados necessários: nome do produto, categoria de produto (limpeza, higiene, etc
 
 ## Arquitetura de Três Níveis
 
-[Exemplo](./img/arquitetura-tres-niveis.png)
+![Exemplo](./img/arquitetura-tres-niveis.png)
 
 ## Esquema(Schema) do Banco de Dados
 
