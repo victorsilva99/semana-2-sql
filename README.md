@@ -5,3 +5,9 @@
 - Teoria e conceitos básicos do banco de Dados;
 - Conceitos SQL;
 - Conhecendo o SQL Server;
+
+## Dia 2
+
+- Modelagem de dados;
+- Continuação conceitos banco de dados;
+- Instalação do SQL Server;

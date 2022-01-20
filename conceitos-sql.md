@@ -59,6 +59,18 @@
 
 ### DTL: Data Transaction Language
 
+## NoSQL - Bancos Não-Relacionais
+
+- **NoSQL - Not Only SQL** - Classe de sistemas de bancos de dados que incorporam outras formas de consultas distintas do SQL tradicional, e que não utilizam estruturas relacionais tradicionais.
+- Geralmente são usados quando se tem volumes de dados muito grandes, como BigDatas.
+- Buscam consistência nas informações armazenadas, disponibilidade do banco de dados e tolerância ao particionamento das informações.
+EX:
+  - MongoDB;
+  - Cassandra;
+  - HBase;
+  - Neo4j;
+  - Redis.
+
 - São comandos que controlam as transações no banco de dados. A forma como um banco de dados relacional implementa a consistência de seus dados se dá por meio dessas transações, esse comandos são:
   - COMMIT;
   - REVOKE.

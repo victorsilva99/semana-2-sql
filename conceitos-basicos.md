@@ -3,16 +3,25 @@
 ## Dado
 
 - **Fato do mundo real** que está registrado.
+- São fatos em uma forma primária, que podem ser armazenados em algum meio.
 Ex: Endereço, Data.
 
 ## Informação
 
 - **Fato útil** que pode ser extraído **direta ou indiretamente** a partir dos dados.
+- São os fatos organizados de maneira a produzir um significado, ou seja, dados colocados em contexto.
 EX: Endereço de entrega, Idade.
+
+## Metadados
+
+- Definimos metadados como sendo "Dados sobre os dados";
+- Permitem efetuar a representação e identificação dos dados, garantindo sua consistência e persistência;
+- Os Metadados são mantidos no Dicionário de Dados (ou em um Catálogo de Dados)
 
 ## Banco de dados (DB - Database ou BD Banco de dados)
 
 - **Coleção organizada de dados, inter-relacionados e persistentes** que representa um subconjunto dos fatos presente em um domínio de aplicação (universo de discurso), onde são armazenados em meio eletrônico, permitindo efetuar consultas que retornam os dados armazenados, de diversas maneiras distintas.
+- Esses dados são organizados de modo a modelar aspectos do mundo real, para que seja possível efetuar processamento que gere informações relevantes para os usuários a partir desses dados.
 - Arquivo(s) armazenado(s) em algum meio, gerenciado por algum sistema específico de software, e utilizado por aplicações que acessam os dados armazenados.
 - O mesmo que **base de dados (Database)**
 - Banco de dados = instância de dado + meta-dados.
@@ -20,6 +29,9 @@ EX: Endereço de entrega, Idade.
   - *Meta-dados* = Dicionário de dados
     - Esquema da base de dados;
     - Acessado através de linguagens de definição de dados;
+
+- Sistema de Banco de Dados:
+[Exemplos](./img/sistema-db.png)
 
 ## SGBD / DBMS
 
@@ -65,23 +77,6 @@ EX: Endereço de entrega, Idade.
       - Especificação de restrições de integridade;
 
 ![Exemplo](./img/arquitetura-geral-sgbd.png)
-
-## Modelagem de dados
-
-- **Processo crucial no projeto de um banco de dados.**
-- Permite determinar as tabelas com seus atributos e relacionamentos que comporão o BD (Banco de Dados).
-- Elimina redundâncias e dados sem interesse.
-- Aplicar regras de negócios de acordo com a real necessidade do cliente.
-- Evita problemas futuros com retrabalho e eventual perda de dados.
-
-## Tabelas, linhas e colunas
-
-- **Coluna:** Domínio de valores de um tipo específico (definição técnica). É uma informação que você quer armazenar no banco de dados. Dependendo do estágio da modelagem também é conhecida como **Atributo**.  As colunas irão fazer a discrição dos atributos da tabela;
-EX: Nome_Prod, Nome_Cliente, Valor_Prod, Endereco.
-- **Linha:** Trata-se de um conjunto de valores de colunas relacionados, conhecido por vezes também como **tupla** ou **registro**.  
-- **Tabela:** Resultado do cruzamento de linhas e colunas. É uma coleção de **linhas (registros)** em um banco de dados relacional, que armazena dados referentes a uma **entidade (assunto)** em particular.  
-
-![Exemplo](./img/exemplo-tabela.png)
 
 ## Chave
 
@@ -144,18 +139,6 @@ EX: Nome_Prod, Nome_Cliente, Valor_Prod, Endereco.
 
 ![Exemplo](./img/exemplo-der.png)
 
-## Bancos Não-Relacionais
-
-- **NoSQL - Not Only SQL** - Classe de sistemas de bancos de dados que incorporam outras formas de consultas distintas do SQL tradicional, e que não utilizam estruturas relacionais tradicionais.
-- Geralmente são usados quando se tem volumes de dados muito grandes, como BigDatas.
-- Buscam consistência nas informações armazenadas, disponibilidade do banco de dados e tolerância ao particionamento das informações.
-EX:
-  - MongoDB;
-  - Cassandra;
-  - HBase;
-  - Neo4j;
-  - Redis.
-
 ## Sistemas de arquivos
 
 - Seria o inverso do sistema de banco de dados, nele os dados tem vários problemas:
@@ -190,7 +173,16 @@ EX:
 - Otimizador de Consultas
   - Escolhe a forma mais eficiente para execução de uma consulta;
 
-## Views
+## Tabelas, linhas e colunas
+
+- **Coluna:** Domínio de valores de um tipo específico (definição técnica). É uma informação que você quer armazenar no banco de dados. Dependendo do estágio da modelagem também é conhecida como **Atributo**.  As colunas irão fazer a discrição dos atributos da tabela;
+EX: Nome_Prod, Nome_Cliente, Valor_Prod, Endereco.
+- **Linha:** Trata-se de um conjunto de valores de colunas relacionados, conhecido por vezes também como **tupla** ou **registro**.  
+- **Tabela:** Resultado do cruzamento de linhas e colunas. É uma coleção de **linhas (registros)** em um banco de dados relacional, que armazena dados referentes a uma **entidade (assunto)** em particular.  
+
+![Exemplo](./img/exemplo-tabela.png)
+
+## Views / Visões
 
 - As views(visões), também são chamados de **tabelas virtuais** ou **derivadas**;
 - Os dados nessas tabelas virtuais são derivados de tabelas de base de dados ou views previamente definidas;

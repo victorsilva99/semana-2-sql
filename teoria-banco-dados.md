@@ -23,8 +23,6 @@ No contexto atual:
   - **Linguagem de Exploração** - É a linguagem de acesso ao dado, necessário para a sua exploração.
   - **Programas adicionais** - Seriam utilidades como gerencia de usuário, otimizadores de dados entre outras coisas.
 
-## Modelagem dos Dados
-
 ### Modelos antigos
 
 - **Modelo Hierárquico**: Uma das primeiras formas foi criada pela IBM, onde os dados eram modelados de maneira bem simplista, porém totalmente de forma hierárquica.
