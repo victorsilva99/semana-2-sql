@@ -29,6 +29,13 @@ EX: Endereço de entrega, Idade.
   - *Meta-dados* = Dicionário de dados
     - Esquema da base de dados;
     - Acessado através de linguagens de definição de dados;
+- **Características e Funcionalidades**:
+  - *Controle de Redundância*: Evitar duplicidade dos dados;
+  - *Múltiplas Visões dos dados*: Exigir ao usuário os dados / informações de formas distintas dependendo de quem e como quer ver esses dados / informações;
+  - *Controle de Concorrência*: É o gerenciamento de acessos e alterações que os usuários fazem;
+  - *Backup e Restauração*;
+  - *Autentificação e Autorização de acesso*;
+  - *Restrições de integridade*: Faz com que os dados não sejam simplesmente adicionados, mas sim criando restrições/condições para garantir a sua integridade ;
 
 - Sistema de Banco de Dados:
 [Exemplos](./img/sistema-db.png)
@@ -64,7 +71,7 @@ EX: Endereço de entrega, Idade.
   - *Física de dados*: Habilidade de modificar o esquema físico sem a necessidade de reescrever os programa aplicativo. Estas modificações são necessárias para melhorar o desempenho;
   - *Lógica de dados*: Habilidade de modificar o esquema conceitual sem a necessidade de reescrever os programas aplicativos. Estas modificações são necessárias quando a estrutura lógica é alterada. EX: adição de um novo atributo. Ela é a mais difícil de ser alcançada, pois os programas são bastante dependentes de estrutura lógica dos dados que eles acessam.
 - **Tipos de Usuários**:
-  - *Programadores de aplicativos*: São os usuários que escrevem os programas de aplicação através da DML;
+  - *Programadores de aplicativos/Projetista*: São os usuários que escrevem os programas de aplicação através da DML;
   - *Usuários de alto nível*:  Interagem com o sistema sem escrever programas;
   - *Usuários especializados (especialistas)*: Escrevem aplicativos especializados como sistemas especialistas;
   - *Usuários ingênuos*: Interagem com o sistema invocando os programas aplicativos;
@@ -78,66 +85,12 @@ EX: Endereço de entrega, Idade.
 
 ![Exemplo](./img/arquitetura-geral-sgbd.png)
 
-## Chave
-
-- Uma ou mais colunas de uma relação cujos valores são usados para identificar de forma exclusiva uma linha ou conjunto de linhas.
-- Pode ser:
-  - Alternativa;
-  - Candidata;
-  - Composta;
-  - Estrangeira; **(FK - Foreign Key)** // Chaves mais importantes, usadas para criar
-  - Primária; **(PK - Primary Key)**   //  relacionamento entre as tabelas.
-  - Substituta (Surrogada - Surrogate);
-
-![Exemplo](./img/exemplo-chaves.png)
-
-## Índices
-
-- Estrutura de dados empregada para **otimizar a seleção de um conjunto específico de colunas** em um banco de dados relacional.
-- Uma das ferramentas de otimização mais conhecidas e utilizadas pelos desenvolvedores de bancos de dados.
-- Indexação em tabelas **pode aumentar significativamente a performance em consultas** ao banco de dados.
-- Porém, **pode diminuir a velocidade de transações** como *inserts* e *updates*.
-
-## Backup e Restauração
+### Backup e Restauração
 
 - **Operações de extrema importância em um BD.**
 - Backup é uma cópia de segurança de dados que pode ser utilizada para realizar REstauração em caso de perda ou corrupção dos dados originais.
 - Importante não apenas no contexto de BD, mas para toda e qualquer forma de armazenamento de dados / arquivos.
 - Deve ser realizado periodicamente, e o melhor cenário é nunca precisar realizar a restauração.
-
-## MER / ERM
-
-- **Modelo Entidade-Relacionamento / Entity–Relationship Model**
-- São diagramas utilizados para projetar Bancos de Dados Relacionais, utilizando como base a relação de objetos reais, e sendo representado por meio de **entidades** e relacionamentos. Nele ilustramos como os dados são estruturados nos processo de negócios ou para detalhar como os dados são armazenados nos bancos de dados relacionais.
-- **Entidades**: As entidades representam um objeto do mundo real e que possuem uma existência independente, como: pessoas, empresa, carro, casa, entre outras coisas que podem ser representadas por uma entidade. Existem três tipos de entidades:
-  - *Fortes*: Não dependem de outras entidades para existirem;
-  - *Fracas*: Dependem de outras entidades para existir, ou seja, elas não possuem existência própria ou não possuem atributos próprios para identificação, dependendo assim, dos atributos chave das entidades fortes;
-  - *Associativas*: são utilizadas quando existe a necessidade de associar uma entidade a um relacionamento;
-- **Atributos**: Os atributos descrevem as propriedades das entidades. A entidade pessoa pode ter como atributo o nome, data de nascimento, idade, endereço. Existem 5 tipos de atributos:
-  - *Simples*: São indivisíveis, ou seja, são atributos atômicos, um exemplo seria o atributo CPF, ele não pode ser dividido em partes menores para formar outros atributos, ele é indivisível.
-  - *Composto*: Podem ser divididos em partes menores, que representam outros atributos, como o atributo endereço, ele pode ser subdividido em atributos menores, como, por exemplo, cidade, estado, rua, CEP.
-  - *Multivalorado*: Pode ter um ou N (vários) valores associados a ele, como, por exemplo, o atributo telefone de um cliente, ele pode ter um ou vários telefones.
-  - *Derivado*: Dependem de outro atributo ou até mesmo outra entidade para existir, como, por exemplo, o atributo idade e o atributo data de nascimento, para descobrimos a idade de uma pessoa precisamos da sua data de nascimento, então, consideramos o atributo idade como derivado do atributo data de nascimento.
-  - *Chave*: É utilizado para identificar de forma única uma entidade, ou seja, os valores associados a esse atributo são distintos dentre o conjunto de entidades. Como exemplo, podemos utilizar o CPF de uma pessoa, ele é único e pode ser utilizado como atributo chave, já que cada pessoa recebe um número de CPF distinto.
-- **Relacionamento**: São o relacionamento entre entidades, criando assim uma associação, que normalmente são representados por verbos. Exemplo: "uma pessoa trabalha para uma empresa". A **Cardinalidade** expressa o número de entidades que a outra entidade pode ser associada, sendo classificada por 3 tipos:
-  - *UM PARA UM (1:1)*: Onde uma entidade X se associa unicamente a uma ocorrência da entidade Y; (EX: Time - Técnico)
-  - *UM PARA MUITOS (1:N - N:1)*: Onde uma entidade X se associa a várias ocorrências da entidade Y, porém, a entidade Y pode apenas se associar a uma ocorrência da entidade X; (EX: Cliente - Carro)
-  - *MUITOS PARA MUITOS (N:N)*: Onde a entidade X o pode se associar a várias ocorrências da entidade Y e a entidade Y pode também se associar a várias ocorrências da entidade X; (EX: Paciente - Médico)
-
-  ![Exemplo](./img/exemplo-mer.png)
-
-## DER / ERD
-
-- **Diagrama Entidade-Relacionamento / Entity–Relationship Model**
-- Diagrama de modelagem de dados que **permite visualizar a interação entre entidades (tabelas), atributos (colunas) e seus relacionamentos.**
-- Derivador do MER, é a representação gráfica do que foi escrito no MER, ele ajuda no processo de implementação do BD, sendo um artefato importante para a criação de um modelo físico. Por estarem tão vinculados, muitas vezes são tratados até como sinônimos.
-- Pode ser criado com ferramentas específicas como **ERWin, Astah, Visual Paradigm, LucidChart** ou mesmo "na unha".
-- Em sua representação ele pode ter:
-  - *Retângulo* = Entidade;
-  - *Losango* = Relacionamento;
-  - *Elipse* = atributo;
-
-![Exemplo](./img/exemplo-der.png)
 
 ## Sistemas de arquivos
 
@@ -148,13 +101,6 @@ EX: Endereço de entrega, Idade.
   - Muito propicio a falhas;
   - Segurança frágil;
   - Tamanho de memória;
-
-## Abstração de Dados
-
-- Pode ser divido em 3 partes:
-  - **Nível físico** – Nível de abstração mais baixo, descreve como os dados são armazenados.
-  - **Nível lógico** – O próximo nível de abstração, descreve quais dados estão armazenados no banco de dados e quais relações existem entre eles.
-  - **Nível de visão** – A abstração mais alta, descreve apenas parte do banco de dados.
 
 ## Eco-sistema do Banco de Dados
 
@@ -173,15 +119,6 @@ EX: Endereço de entrega, Idade.
 - Otimizador de Consultas
   - Escolhe a forma mais eficiente para execução de uma consulta;
 
-## Tabelas, linhas e colunas
-
-- **Coluna:** Domínio de valores de um tipo específico (definição técnica). É uma informação que você quer armazenar no banco de dados. Dependendo do estágio da modelagem também é conhecida como **Atributo**.  As colunas irão fazer a discrição dos atributos da tabela;
-EX: Nome_Prod, Nome_Cliente, Valor_Prod, Endereco.
-- **Linha:** Trata-se de um conjunto de valores de colunas relacionados, conhecido por vezes também como **tupla** ou **registro**.  
-- **Tabela:** Resultado do cruzamento de linhas e colunas. É uma coleção de **linhas (registros)** em um banco de dados relacional, que armazena dados referentes a uma **entidade (assunto)** em particular.  
-
-![Exemplo](./img/exemplo-tabela.png)
-
 ## Views / Visões
 
 - As views(visões), também são chamados de **tabelas virtuais** ou **derivadas**;
@@ -195,25 +132,6 @@ EX: Nome_Prod, Nome_Cliente, Valor_Prod, Endereco.
   - Simplifica a consulta;
   - Segurança;
   - Exportação de dados;
-
-## Stored Procedures / Procedimentos Armazenados
-
-- São um conjunto de declarações SQL armazenadas no servidor.
-- Eles são utilizados quando:
-  - Aplicações clientes são escritas em diferentes linguagens ou trabalham em diferentes plataformas, mas precisam executar as mesas operações de banco de dados;
-  - Segurança é primordial. Bancos, por exemplo, utilizam funções e procedimentos armazenados para tordas as operações comuns. Isso provê consistência e segurança, pois cada operação é devidamente registrada.
-- Rotinas armazenadas podem fornecer melhor desempenho pois menos informações precisam ser enviadas entre o cliente e o servidor;
-- A desvantagem é que aumenta-se a carga no servidor de banco de dados;
-- Permitem a criação de uma biblioteca de funções no servidor de banco de dados;
-
-## Triggers / Gatilhos
-
-- É um objeto do banco de dados que está associado a uma tabela, e é ativado quando um evento particular ocorre na tabela;
-- Principais usos são:
-  - Executar verificações de valores; ou
-  - Fazer cálculos sobre os valores informados em uma atualização;
-- Ele é ativado quando uma declaração INSERT, UPDATE ou DELETE ocorre na tabela associada;
-- O disparo do "gatilho" pode ser configurado para ocorrer antes ou depois do evento de disparo.
 
 ## Data Types
 

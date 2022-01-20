@@ -23,28 +23,6 @@ No contexto atual:
   - **Linguagem de Exploração** - É a linguagem de acesso ao dado, necessário para a sua exploração.
   - **Programas adicionais** - Seriam utilidades como gerencia de usuário, otimizadores de dados entre outras coisas.
 
-### Modelos antigos
-
-- **Modelo Hierárquico**: Uma das primeiras formas foi criada pela IBM, onde os dados eram modelados de maneira bem simplista, porém totalmente de forma hierárquica.
-![Exemplo](./img/modelo-hierarquico.jpg)
-- **Modelo em Rede**: Uma evolução do hierárquico, onde os dados não teriam superioridade ou inferioridade entre si, eles eram ligados em uma forma de rede inteligente.
-![Exemplo](./img/modelo-em-rede.jpg)
-
-### Modelos atuais
-
-- Apesar de funcionais, os modelos antigos não facilitavam uma coisa que precisaria ser simples, o  **relacionamento**, onde os registros de uma tabela poderiam ter relação com registro de outra tabela, criando assim uma relação entre os dados. Foi então que na década de 70, um dos pesquisadores da IBM chamado Edgar F. Codd propôs um novo modelo:
-
-- **Modelo Relacional**: Nesse novo paradigma, em vez de hierarquias ou ligações de redes, eles teriam relações mais intrínsecas, eles teriam uma **relação**. Ele é fundamentado no paradigma da orientação a conjuntos. Esse modelo é o mais utilizado ultimamente, muito também devido a fácil didática. Os bancos relacionais são a opção ideal para sistemas ERP, CRM ou de gerenciamento financeiro, em que é necessária uma grande consistência de dados.
-![Exemplo](./img/modelo-relacional.jpg)
-
-- Esse modelo é interessante pois através de um dado eu posso obter outras informações que estejam relacionadas, desde que esse dado seja bem especificado, diferenciando dos modelos antigos.
-
-> Porém atualmente não há apenas modelos relacionais, existem outras formas de se modelar dados, e cada uma atende uma necessidade, alguns exemplos são:
-
-- **Modelo baseado em Documentos**: É um tipo de banco de dados não relacional projetado para armazenar e consultar dados como documentos do tipo JSON. Ele facilita para que os desenvolvedores armazenem e consultem dados usando o mesmo formato de modelo de documento que usam no código do aplicativo. Devido a sua estrutura ele é capaz de evoluir conforme as necessidades dos aplicativos.
-
-- **Modelo Orientado a Objeto (BDOO)**: Armazenar objetos compartilhados entre diferentes aplicações. Estes meios de armazenamento se tornaram conhecidos com o crescente uso de linguagens Orientada a Objetos. Esse modelo parte de uma premissa simples: o que se persiste são os objetos e, portanto, o seu “estado”, representado pelos atributos. Os atributos seriam equivalentes aos campos – ou colunas – de uma tabela. Já as associações entre objetos (atributos que referenciam outros objetos) podem ser comparadas aos relacionamentos, criados como restrições de integridade referencial (“chaves estrangeiras”). Assim, o correspondente a uma “tabela-filha” em um BDOO seria um atributo que tenha como valor outro objeto.
-
 ## Referências
 
 - O que é um banco de dados? - Curso em Vídeo - [https://youtu.be/Ofktsne-utM]

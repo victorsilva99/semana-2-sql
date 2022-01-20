@@ -11,3 +11,7 @@
 - Modelagem de dados;
 - Continuação conceitos banco de dados;
 - Instalação do SQL Server;
+
+## Dia 3
+
+- Continuação do curso de modelagem de Dados;
