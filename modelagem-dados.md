@@ -215,9 +215,9 @@ Exemplo: "uma pessoa trabalha para uma empresa". Seria uma associação nomeada 
   - *Candidata / Alternativa* - Atributo ou grupo de atributos com potencial para se tornarem uma chave; Uma chave candidata que não seja usada como chave primária será conhecida como **Chave Alternativa**.
   -*Substituta (Surrogada - Surrogate)* - Valor numérico, único, adicionado a uma relação para servir como chave primária; Não possui significado para os usuários e geralmente fica escondida nas aplicações; São frequentemente usadas no lugar de uma chave primária composta;
   - *Composta* - Chave que é composta de dois ou mais atributos (colunas); Geralmente empregada quando não é possível utilizar uma única coluna de um tabela para identificar de forma exclusiva seus registros.
-  - *Primária* **(PK - Primary Key)** - É uma chave candidata escolhida para ser a **chave principal** na relação; Identifica de forma **exclusiva** os registros em uma tabela, não podendo ter repetição de valores nem tampouco valor nulo.
+  - *Primária*: **(PK - Primary Key)** É uma chave candidata escolhida para ser a **chave principal** na relação; Identifica de forma **exclusiva** os registros em uma tabela, não podendo ter repetição de valores nem tampouco valor nulo.
 - **Não-Única (Non-Unique)**:
-  - *Estrangeira* **(FK - Foreign Key)** - Coluna de uma tabela que estabelece um **relacionamento com a Chave Primária (PK) de outra tabela; É a partir da chave estrangeira que sabemos com qual registro em outra tabela um registro está relacionado.
+  - *Estrangeira*: **(FK - Foreign Key)** Coluna de uma tabela que estabelece um **relacionamento com a Chave Primária (PK) de outra tabela; É a partir da chave estrangeira que sabemos com qual registro em outra tabela um registro está relacionado.
 
 ### Chave Primária (PK - Primary Key)
 
