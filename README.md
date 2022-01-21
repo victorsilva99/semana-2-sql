@@ -15,3 +15,5 @@
 ## Dia 3
 
 - Continuação do curso de modelagem de Dados;
+- Finalizado parte teórica;
+- Iniciado projeto prático;

@@ -14,7 +14,7 @@
 - Um modelo é uma estrutura que ajuda a comunicar os conceitos que estão na mente do projetista. Podemos usá-lo para tarefas como descrever, analisar, especificar e comunicar ideias.
 - O modelo deve possuir detalhes suficientes para que um desenvolvedor consiga construir o banco de dados de acordo com a necessidade do projeto.
 
-## Modelos de Dados
+### Modelos de Dados
 
 - É uma coleção de ferramentas conceituais para a descrição de dados, relacionamentos, semântica de dados e restrições de consistência.
 - Divido em duas formar:
@@ -139,10 +139,11 @@ Os atributos descrevem as propriedades/características das entidades. A entidad
 - **Multivalorado**: Pode ter um ou N (vários) valores associados a ele, ou seja, conter mais de um valor para um mesmo registro. Por exemplo, o atributo telefone de um cliente, pois o cliente pode ter vários telefones.
 - **Derivado**: Dependem de outro atributo ou até mesmo outra entidade para existir, como, por exemplo, o atributo idade e o atributo data de nascimento, para descobrimos a idade de uma pessoa precisamos da sua data de nascimento, então, consideramos o atributo idade como derivado do atributo data de nascimento. No diagrama o Multivalorado **recebe um * antes do seu nome**
 - **Determinante**: É utilizado para identificar de forma única uma entidade, ou seja, os valores associados a esse atributo são distintos dentre o conjunto de entidades. Como exemplo, podemos utilizar o CPF de uma pessoa, ele é único e pode ser utilizado como atributo determinante, já que cada pessoa recebe um número de CPF distinto (PK - Primary Key). No diagrama entidade-relacionamento costumamos deixar o **atributo determinante sublinhado**.
-- **Identificador/Chave**: Identifica uma instância específica na classe de entidade; Se diferenciam dos determinantes pois podem ser repetidos dependendo da situação. Esses atributos podem ser:
+- **Identificador**: Identifica uma instância específica na classe de entidade;  Se diferenciam dos determinantes pois podem ser repetidos dependendo da situação. Esses atributos podem ser:
   - *Únicos*: O valor dos dados da chave é único na entidade;
   - *Não-única* - Usada para agrupar instâncias de classe em categorias (FK - Foreign Key).
   - *Compostas* - As chaves podem ser compostas, consistindo de dois ou mais atributos combinados.
+- **Chave** - Um atributo-chave é um que é uma PK ou parte de uma PK composta;
 
 ### Relacionamento
 
@@ -166,7 +167,14 @@ Exemplo: "uma pessoa trabalha para uma empresa". Seria uma associação nomeada 
 
 - Como os dados de diferentes entidades são armazenados em tabelas distintas, geralmente precisamos combinar duas ou mais tabelas para responder ás perguntas específicas de usuários. Por exemplo, podemos querer saber quais produtos, e em qual quantidade, foram adquiridos por um cliente em particular, Precisamos então de dados das tabelas de clientes, de pedidos e de produtos para obter essa informação.
 
+## Relação Aninhada
+
+- Significa uma tabela dentro de outra tabela, que seria quando a tabela tem um conjunto de atributos/colunas que em si formam outra tabela, com dados que não precisariam estar nessa tabela.
+
 ### Grau de um relacionamento
+
+- **Forte** - Onde uma entidade depende de outra para existir; A existência de uma entidade filha é depende de uma entidade-pai; A chave primária da entidade-filha contém a chave primária da entidade-pai; Se a entidade pai não existir, a entidade filha desaparece;
+- **Fraco** - A existência de uma entidade é independente de outras entidades; A chave primária de uma entidade-filha não contém a chave primária da entidade-pai;
 
 - Define o número de entidades que participam do relacionamento, podendo ser (sucessivamente):
   - **Unário** - Quando uma entidade se relaciona com ela mesma.
@@ -190,10 +198,11 @@ Exemplo: "uma pessoa trabalha para uma empresa". Seria uma associação nomeada 
   - **(1,1)** - O primeiro número representa a cardinalidade minima, e o segundo a máxima. Porém, dependendo da situação pode haver apenas um número, indicando que esse valor serve tanto para a minima como para a máxima; Os parenteses não são obrigatórios, porém é uma boa prática;
   - Outros exemplos:
   ![exemplo](.img/simbologia-cardinalidade.png)
+  ![exemplo](.img/crows-foot.png)
 - Expressa o número de entidades que a outra entidade pode ser associada, sendo classificada por 3 tipos:
   - *UM PARA UM (1:1)*: Onde uma entidade X se associa unicamente a uma ocorrência da entidade Y; (EX: Time - Técnico); Uma instância de entidade única em uma entidade está relacionada com uma instância de entidade única de outra entidade;
   - *UM PARA MUITOS (1:N - N:1)*: Onde uma entidade X se associa a várias ocorrências da entidade Y, porém, a entidade Y pode apenas se associar a uma ocorrência da entidade X; (EX: Cliente - Carro); Um instância de entidade única em uma classe de entidade está relacionada a muitas instâncias de entidade em outra classe de entidade.
-  - *MUITOS PARA MUITOS (N:M)*: Onde a entidade X o pode se associar a várias ocorrências da entidade Y e a entidade Y pode também se associar a várias ocorrências da entidade X; (EX: Paciente - Médico); Muitas instâncias em uma entidade estão relacionadas a muitas instâncias de entidade em outra entidade. Por ser muito díficil de se aplicar no banco de dados, o ideal é desmembrar esse relacionamento criando outra entidade e transformar ele em um relacionamento 1:N ou 1:1;
+  - *MUITOS PARA MUITOS (N:M)*: Onde a entidade X o pode se associar a várias ocorrências da entidade Y e a entidade Y pode também se associar a várias ocorrências da entidade X; (EX: Paciente - Médico); Muitas instâncias em uma entidade estão relacionadas a muitas instâncias de entidade em outra entidade. Por ser muito difícil de se aplicar no banco de dados, o ideal é desmembrar esse relacionamento criando outra entidade e transformar ele em um relacionamento 1:N ou 1:1;
 
   ![Exemplo](./img/exemplo-mer.png)
 
@@ -242,11 +251,38 @@ Exemplo: "uma pessoa trabalha para uma empresa". Seria uma associação nomeada 
 
 - No caso do SQL Server, ele tem tipos de dados para tratar XML e imagens também.
 
+## Diagramação
+
+- O uso de um diagrama facilita a modelagem e a comunicação entre os membros da equipe de desenvolvimento, permitindo que todos falem a mesma "lingua" durante o processo.
+- Existem vários métodos para representar relacionamentos entre entidades.
+- As notações gráficas mais utilizadas em modelagem de dados são:
+  - IDEF1X
+  - Bachman
+  - Min-Max
+  - Pé de Galinha (Crow's Foot)
+  - Martin
+  - UML
+  - Peter Chen
+
+  ![ex](.img/modelos-conceituais.png)
+
+- **Softwares para Diagramação**
+  - Ferramentas CASE (Computer-Aided Software Engineering - Engenharia de software com auxilio de computador)
+    - Astah
+    - Lucidchart
+    - erwin Data Modeler
+    - ERDPlus
+    - GenMyModel
+    - Star UML
+    - Microsoft Vision
+    - MySQL Workbench
+    - Visual Paradigm
+
 ## DER / ERD
 
 - **Diagrama Entidade-Relacionamento / Entity–Relationship Model**
 - Diagrama de modelagem de dados que **permite visualizar a interação entre entidades (tabelas), atributos (colunas) e seus relacionamentos.**
-- Derivador do MER, é a representação gráfica do que foi escrito no MER, ele ajuda no processo de implementação do BD, sendo um artefato importante para a criação de um modelo físico. Por estarem tão vinculados, muitas vezes são tratados até como sinônimos.
+- Derivador do MER, foi proposto por Peter Chen para representação gráfica do que foi escrito no MER, ele ajuda no processo de implementação do BD, sendo um artefato importante para a criação de um modelo físico. Por estarem tão vinculados, muitas vezes são tratados até como sinônimos.
 - Pode ser criado com ferramentas específicas como **ERWin, Astah, Visual Paradigm, LucidChart** ou mesmo "na unha".
 - Em sua representação ele pode ter:
   - *Retângulo* = Entidade;
@@ -255,6 +291,7 @@ Exemplo: "uma pessoa trabalha para uma empresa". Seria uma associação nomeada 
   - *Linhas* = Ligam atributos a entidades e entidades a relacionamentos;
   - *Linhas duplas* = ;
   - *Retângulos duplos*= ;
+  - *Elipse dupla* = atributo que pode ocorrer mais de uma vez no banco de dados (multivalorado);
   - *subatributos* = ;
   - *Triângulos* = ;
 
@@ -348,6 +385,156 @@ As principais etapas no desenvolvimento de um BD são:
     - Presença ou não do dado;
     - Intervalos de valores no domínio;
     - Conjuntos de valores discretos;
-  -*Integridade de Vazio*: 
-  -*Integridade de Chave*: 
-  -*Integridade Definida pelo Usuário*: 
+  -*Integridade de Vazio*: Este tipo de integridade informa se a a coluna é obrigatória ou opcional - ou seja, se é possível não inserir um valor na coluna; Uma coluna de chave primária, por exemplo, sempre deve ter dados inseridos, e nunca pode estar vazia, para nenhum registro.
+    - **Valores Nulos (NULL)**: Um valor NULL significa que não existem dados. É diferente de zero, espaço, string vazia ou tabulação; Os nulos podem ser problemáticos, pois indicam:
+      - O valor da coluna não é apropriado;
+      - O valor não foi inserido;
+      - O valor é desconhecido;
+  -*Integridade de Chave*: Os valores inseridos na coluna de chave primária devem ser únicos, não admitindo-se repetições nesse valores; Dessa forma, as tuplas serão sempre distintas; Os valores de chave primária também não podem ser nulos.
+  -*Integridade Definida pelo Usuário*: Diz respeito a regras de negócio específicas que são definidas pelo usuário do banco de dados; Por exemplo, pode-se definir que uma coluna somente aceitará um conjunto restrito de valores;
+
+## Dicionário de Dados
+
+- Um dicionário de dados é um documento usado para armazenar informações sobre o conteúdo, formato e a estrutura de um banco de dados, assim como os relacionamentos entre os seus elementos.
+- É importante manter um dicionário de dados para limitar erros ao criar a estrutura física do banco de dados no computador;
+- Também chamado de **Repositório de Metadados**.
+
+### Metadados
+
+- Definimos metadados como sendo "Dados sobre os dados";
+- Permitem efetuar a representação e identificação dos dados, garantindo sua consistência e persistência;
+- Os Metadados são mantidos no Dicionário de Dados (ou em um Catálogo de Dados)
+
+![ex](.img/dicionario-dados.png)
+> Entidades
+![ex](.img/dicionario-dados-atributos.png)
+> Atributos
+![ex](.img/dicionario-dados-relacionamento.png)
+> Relacionamento
+
+## Dependências
+
+- A ideia de dependência é justamente estabelecer uma relação entre os atributos de uma tabela.
+
+### Dependência Funcional
+
+- Dependência mais comum.
+- Seja E um entidade, e X  Y dois atributos quaisquer de E. Dizemos que Y é funcionalmente dependente de X se e somente se cada valor de X tiver associado a ele exatamente um valor de Y.
+Simbolicamente:  
+
+- *X --> Y*
+
+Que lemos como **"X determina funcionalmente Y"**, ou, **Y depende funcionalmente de X**.  
+
+Ex.: O prazo de entrega de um pedido depende do número do pedido considerado:
+
+- *Numero_Pedido --> Prazo_Entrega_Pedido*
+
+O atributo que determina o valor é chamado de **Determinante**. O outro é chamado de **Dependente**.
+Uma chave primária em uma relação determina funcionalmente todos os outros atributos não-chave na linha.
+
+- **Tipos de Dependências Funcionais**:
+  - *Total* - Em uma relação com um PK composta, um atributo não-chave que dependa dessa PK como um todo, e não somente de parte dela, é dito como possuindo **Dependência Funcional Total**.
+  - *Parcial* - É parcial quando os atributos não-chave não dependem funcionalmente de toda a PK quando esta for composta. Ou seja, existe uma dependência funcional, mas somente de uma parte da chave primária.
+  - *Transitiva* - Ocorre quando um campo não depende diretamente da chave primária da tabela (nem mesmo parcialmente), mas depende de um outro campo não-chave. Em outras palavras, o atributo não deveria estar nessa tabela, e sim em outra e a partir disse criar o relacionamento.
+  - *Multivalorada* - Ocorre quando, para cada valor de um atributo A, existe um conjunto de valores para outros atributos B e C que estão associados a ele, mas não independentes entre si. Representamos a dependência multivalorada assim:
+
+  - *A ->> B*
+
+  Onde B é a coluna que depende de A. Durante o processo de normalização é comum se criar novas tabelas a partir da dependência valorada para não haver tantas repetições.
+  - *Trivial* - Dependência que não pode deixar de ser satisfeita. Uma DF é trivial se o lado direito da expressão é um subconjunto da lado esquerdo.
+
+  - *A --> B* é uma DF trivial se B for um subconjunto de A.
+  Exemplo:
+  {ID_Func, Nome_Func} --> ID_Func é uma DF trivial porque ID_Func é um subconjunto de {ID_Func, Nome_Func}
+
+## Normalização
+
+- Normalização consiste em um processo de análise de uma relação para assegurar que seja bem formada.
+- **Decompor** relações com *anomalias* para produzir relações menores e bem-estruturadas. Ou seja, em uma relação normalizada podemos inserir, excluir ou modificar registros sem criar anomalias.
+  - Decompor significa pegar uma tabela com vários campos e extrair os campos que não são relevantes para essa tabela, e assim formar outras tabelas com esses campos. Nenhum dado é perdido, apenas organizado de maneira correta.
+
+- Esse processo foi proposto Edgar Frank Codd, em 1972, para aplicar a um esquema de relação uma série de *teste* para certificar que ele satisfaça uma **Forma NormaL (FN)**. Codd propôs originalmente 3 formas normais:
+
+### 1ª FN
+
+Definida historicamente para reprovar atributos multivalorados, compostos e suas combinações. O domínio de um atributo deve incluir apenas valores atômicos (indivisíveis), e o valor de qualquer atributo em uma tupla deve ser único valor do domínio desse atributo;
+    - Uma tabela está na 1ª FN quando:
+      - Somente possui *valores atômicos*;
+      - Não há grupos de atributos repetidos (há apenas um dado por colunas nas linhas)
+      - Existe uma chave primária;
+      - Relação não possui *atributos multivalorados* ou *relações aninhadas*;
+      - Uma tabela está na 1ª FN se somente houverem valores atômicos no domínio de seus atributos.
+      - Cada informação deve ser colocada em um campo diferente;
+
+### 2ª FN
+
+Baseada no conceito de *Dependência Funcional Total*; Um esquema de relação R está na 2FN se cada atributo não-chave de R for total e funcionalmente dependente da PK de R; Para testar a 2FN, testamos as dependências funcionais cujos atributos fazem parte da chave primária. Caso a PK tenha um único atributo, esse teste não precisa ser aplicado.
+
+- Um tabela está na 2FN se:
+  - Está na 1FN;
+    - Todos os atributos não-chave são funcionalmente dependentes de todas as partes da chave primária.
+    - Não existem *dependências parciais*;
+    - Caso contrário, deve-se gerar uma nova tabela com os dados.
+    - Deve-se criar uma nova relação para cada chave PK ou combinação de atributos que forem **determinantes em uma dependência funcional**; Esse atributo será a PK na nova tabela; Mova os atributos não-chave dependentes desta PK para uma nova tabela.
+
+### 3ª FN**
+
+  Baseada no conceito de *Dependência Transitiva*; A relação não deve ter um atributo não-chave determinado funcionalmente por outro atributo não chave (ou conjunto); Não deve haver dependência transitiva de um atributo não-chave sobre a PK; Deve-se decompor e montar uma nova relação que inclua os atributos não-chave que determinam funcionalmente outros atributos não-chave.
+
+- Uma tabela está na 3FN se:
+  - Estiver na 2FN;
+  - Não existirem *Dependências Transitivas*;
+  - Nenhuma coluna não-chave depender de outra coluna não-chave;
+- Para cada atributo (grupo) não-chave que for um determinante na relação, crie uma nova tabela; Esse atributo será a PK na nova relação; Mova então todos os atributos que são dependentes funcionalmente do atributo chave para a nova tabela. O atributo (PK na nova relação) fica também na tabela original, e servirá como uma chave estrangeira para associar as duas relações;
+
+> Posteriormente a 3ª forma normal foi revisada e uma definição mais robusta foi proposta por Boyce e Codd, denominada Forma Normal de Boyce Codd (FNBC). Existem também as 4ª e 5ª FN, porém são raramente utilizadas.
+
+- O ideal é alcançar sempre a 3ª FN ou a FNBC durante a normalização.
+- Não é adequado normalizar apenas até a 1ª FN ou à 2ª FN, pois na verdade essas formas normais são usadas para se chegar à 3ª FN ou a FNBC, para garantir a boa formação das tabelas.
+
+- **Passos da Normalização**
+
+Tabela não normalizada --> Remover atributos multivalorados e compostos --> **1ªFN** --> Remover Dependências Parciais --> **2ª FN** --> Remover Dependências Transitivas --> **3ªFN**;
+
+### FNBC - Forma Normal de Boyce-Codd
+
+- A definição original da 3FN de Codd não lidava adequadamente com uma relação que:
+  - Tivesse duas ou mais chaves candidatas;
+  - Essas chaves candidatas fossem compostas;
+  - Elas tivessem *superposição (atributos em comum)*;
+
+Caso a combinação das condições acima não ocorra em uma tabela, basta aplicar a 3FN;
+Uma relação está em NBC se e somente se os únicos determinantes são chaves candidatas.
+
+- Cada relação na FNBC também está na 3FN, mas uma relação na 3FN não está necessariamente na FNBC (a maioria está);
+- Quando uma tabela possui mais de uma chave candidata, podem ocorrer anomalias;
+- Na FNBC as chaves candidatas não possuem dependências parciais por outros atributos;
+- Uma relação R está na FNBC sempre que uma dependência funcional não-trivial X --> A se mantiver em R, assim X é a superchave de R.
+
+- Para normalizar uma tabela até a FNBC devemos decompor a tabela com os passos a seguir:
+
+  - Encontrar uma dependência funcional não-trivial X -- > Y que viole a condição de FNBC. X não deve ser uma superchave.
+  - Dividir a tabela em duas: Uma com os atributos XY, ou seja, todos os atributos da dependência;
+  - Outra com os atributos X juntamente com os atributos restante da tabela original.
+  - Pode haver mais de uma decomposição válida na FNBC.
+
+### Anomalias de atualização
+
+- Anomalias são problemas que ocorrem em bancos de dados mal planejados e não-normalizados, geralmente ocorrendo por excesso de dados armazenados em uma mesma tabela.
+- São causadas pelas dependências parciais transitivas.
+- As anomalias de atualização são classificadas de:
+  - **Inserção/Inclusão**: Não deve ser possível adicionar um dado a não ser que outro dado esteja disponível. Por exemplo, não deve ser permitido cadastrar um novo livro sem que um autor já esteja cadastrado.
+  - **Exclusão**: Ao excluirmos um registro, dados referentes em outra tabela são excluídos. Por exemplo, se excluirmos um autor, os livros desse autor devem ser excluídos também;
+  - **Modificação**: Ao alterar um dado em uma tabela, dados em outras tabelas precisam ser alterados, por exemplo, se o código de um autor for modificado, esse código deve ser modificado na tabela de autores e na de livros também, para manter o relacionamento entre livros e seus autores corretos;
+
+- **Eliminar Anomalias** - Projetar os esquemas (estrutura da tabela) de relações no banco de dados de modo que nenhuma anomalia de inserção, exclusão ou modificação esteja presente nas relações. Para isso, usamos o processo de **Normalização**.
+
+### Objetivos da normalização
+
+- Analisar esquemas de relações (tabelas) como base em suas dependências funcionais e chaves primárias para:
+
+1. Minimizar redundâncias;
+2. Minimizar anomalias de inserção, exclusão e modificação;
+
+- As relações são decompostas em esquemas de relação menores que atendem aos testes de forma normal.
