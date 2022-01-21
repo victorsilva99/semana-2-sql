@@ -5,18 +5,13 @@
 - **Fato do mundo real** que está registrado.
 - São fatos em uma forma primária, que podem ser armazenados em algum meio.
 Ex: Endereço, Data.
+  - *Dado Atômico* - Elementos de dados que representam o nível mais baixo de detalhamento. Então, campos não-atômicos são aqueles que podem ser subdivididos em mais de um campo, pois eles escondem detalhes, como por exemplo o nome de uma pessoa, que contém o primeiro nome e sobrenome.
 
 ## Informação
 
 - **Fato útil** que pode ser extraído **direta ou indiretamente** a partir dos dados.
 - São os fatos organizados de maneira a produzir um significado, ou seja, dados colocados em contexto.
 EX: Endereço de entrega, Idade.
-
-## Metadados
-
-- Definimos metadados como sendo "Dados sobre os dados";
-- Permitem efetuar a representação e identificação dos dados, garantindo sua consistência e persistência;
-- Os Metadados são mantidos no Dicionário de Dados (ou em um Catálogo de Dados)
 
 ## Banco de dados (DB - Database ou BD Banco de dados)
 
