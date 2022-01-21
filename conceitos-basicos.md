@@ -133,18 +133,6 @@ EX: Endereço de entrega, Idade.
   - Segurança;
   - Exportação de dados;
 
-## Data Types
-
-- Cada SGBD tem independencia para criar seus próprios data types, porém os tipos padrões são respeitados:
-  - Integer (int)
-  - Char
-  - Long
-  - Float
-  - DateTime
-  - Binary
-
-- No caso do SQL Server, ele tem tipos de dados para tratar XML e imagens também.
-
 ## Referências
 
 - Fábio dos Reis, Bóson Treinamentos - [https://youtu.be/2E7crqRI1iE]

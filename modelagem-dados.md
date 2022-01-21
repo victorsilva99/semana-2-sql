@@ -182,23 +182,33 @@ Exemplo: "uma pessoa trabalha para uma empresa". Seria uma associação nomeada 
 
 ### Cardinalidade
 
+- Conceito que diz respeito ao número de itens que se relacionam nas entidades.
+- Pode ser máxima ou mínima, significando respectivamente os números mínimos e máximo de instância de cada entidade associada no relacionamento.
+- *Máxima*: Trata-se do número máximo de instâncias de entidade que podem participar em um relacionamento. Pode ser 1 ou N (muitos);
+- *Mínima*: Número mínimo de instâncias de entidade que DEVEM obrigatoriamente participar em um relacionamento; 0 é participação opcional e 1 é obrigatória.
+- Representação de Peter Chen:
+  - **(1,1)** - O primeiro número representa a cardinalidade minima, e o segundo a máxima. Porém, dependendo da situação pode haver apenas um número, indicando que esse valor serve tanto para a minima como para a máxima; Os parenteses não são obrigatórios, porém é uma boa prática;
+  - Outros exemplos:
+  ![exemplo](.img/simbologia-cardinalidade.png)
 - Expressa o número de entidades que a outra entidade pode ser associada, sendo classificada por 3 tipos:
-  - *UM PARA UM (1:1)*: Onde uma entidade X se associa unicamente a uma ocorrência da entidade Y; (EX: Time - Técnico)
-  - *UM PARA MUITOS (1:N - N:1)*: Onde uma entidade X se associa a várias ocorrências da entidade Y, porém, a entidade Y pode apenas se associar a uma ocorrência da entidade X; (EX: Cliente - Carro)
-  - *MUITOS PARA MUITOS (N:N)*: Onde a entidade X o pode se associar a várias ocorrências da entidade Y e a entidade Y pode também se associar a várias ocorrências da entidade X; (EX: Paciente - Médico)
+  - *UM PARA UM (1:1)*: Onde uma entidade X se associa unicamente a uma ocorrência da entidade Y; (EX: Time - Técnico); Uma instância de entidade única em uma entidade está relacionada com uma instância de entidade única de outra entidade;
+  - *UM PARA MUITOS (1:N - N:1)*: Onde uma entidade X se associa a várias ocorrências da entidade Y, porém, a entidade Y pode apenas se associar a uma ocorrência da entidade X; (EX: Cliente - Carro); Um instância de entidade única em uma classe de entidade está relacionada a muitas instâncias de entidade em outra classe de entidade.
+  - *MUITOS PARA MUITOS (N:M)*: Onde a entidade X o pode se associar a várias ocorrências da entidade Y e a entidade Y pode também se associar a várias ocorrências da entidade X; (EX: Paciente - Médico); Muitas instâncias em uma entidade estão relacionadas a muitas instâncias de entidade em outra entidade. Por ser muito díficil de se aplicar no banco de dados, o ideal é desmembrar esse relacionamento criando outra entidade e transformar ele em um relacionamento 1:N ou 1:1;
 
   ![Exemplo](./img/exemplo-mer.png)
 
 ## Chaves
 
+- Uma chave consiste em uma ou mais colunas de uma relação cujos valores são usados para identificar de forma exclusiva uma linha ou conjunto de linha.
+- Pode ser **única** (identifica uma única linha) ou **não-única** (identifica um conjunto de linhas).
 - Uma ou mais colunas de uma relação cujos valores são usados para identificar de forma exclusiva uma linha ou conjunto de linhas.
-- Pode ser:
-  - Alternativa;
-  - Candidata;
-  - Composta;
-  - Estrangeira; **(FK - Foreign Key)** // Chaves mais importantes, usadas para criar
-  - Primária; **(PK - Primary Key)**   //  relacionamento entre as tabelas.
-  - Substituta (Surrogada - Surrogate);
+- **Únicas (Unique):**
+  - *Candidata / Alternativa* - Atributo ou grupo de atributos com potencial para se tornarem uma chave; Uma chave candidata que não seja usada como chave primária será conhecida como **Chave Alternativa**.
+  -*Substituta (Surrogada - Surrogate)* - Valor numérico, único, adicionado a uma relação para servir como chave primária; Não possui significado para os usuários e geralmente fica escondida nas aplicações; São frequentemente usadas no lugar de uma chave primária composta;
+  - *Composta* - Chave que é composta de dois ou mais atributos (colunas); Geralmente empregada quando não é possível utilizar uma única coluna de um tabela para identificar de forma exclusiva seus registros.
+  - *Primária*; **(PK - Primary Key)** - É uma chave candidata escolhida para ser a **chave principal** na relação; Identifica de forma **exclusiva** os registros em uma tabela, não podendo ter repetição de valores nem tampouco valor nulo.
+- **Não-Única (Non-Unique)**:
+  - Estrangeira; **(FK - Foreign Key)** - Coluna de uma tabela que estabelece um **relacionamento com a Chave Primária (PK) de outra tabela; É a partir da chave estrangeira que sabemos com qual registro em outra tabela um registro está relacionado.
 
 ### Chave Primária (PK - Primary Key)
 
@@ -208,7 +218,29 @@ Exemplo: "uma pessoa trabalha para uma empresa". Seria uma associação nomeada 
 
 - Coluna que define como as tabelas se relacionam umas com as outras. Uma FK se refere a uma OK ou a uma chave única em outra tabela (ou na mesma tabela). Por exemplo, na tabela de pedidos, podemos ter uma chave estrangeira efetuando o relacionamento com a chave primária na tabela clientes.
 
+### Instruções para criação de PK e FK
+
+- Não é possível haver valores duplicados em uma chave primária;
+- No geral, não é possível alterar o valor de uma chave primária.
+- Chaves estrangeiras são baseadas em valores de dados, classificadas como ponteiros lógicos;
+- Um valor de uma chave estrangeira deve corresponder a um valor existente em uma chave primária associada (ou valor de chave única). Caso contrário, deve ser nulo (NULL);
+- Uma chave estrangeira deve referenciar uma chave primária ou uma coluna de chave única;
+
 ![Exemplo](./img/exemplo-chaves.png)
+
+### Conceito de Domínios / Data Types
+
+- Definir tipos de dados;
+- Especificar valores válidos em um campo;
+- Cada SGBD tem independencia para criar seus próprios data types, porém os tipos padrões são respeitados:
+  - Integer (int)
+  - Char
+  - Long
+  - Float
+  - DateTime
+  - Binary
+
+- No caso do SQL Server, ele tem tipos de dados para tratar XML e imagens também.
 
 ## DER / ERD
 
@@ -300,4 +332,22 @@ As principais etapas no desenvolvimento de um BD são:
   - Criar associar chaves
   - Normalizar para reduzir a redundâncias
   - Desnormalizar para aumentar performance.
-  
+
+## Integridade de Dados para
+
+- Manutenção e garantia da consistência e precisão dos dados, sendo um aspecto crítico no design, implementação e uso de sistemas de armazenamento de dados; A integridade é atingida por meio da aplicação de:
+
+- **Restrições de Integridade**:
+  -*Integridade Referencial*: Assegura que valores de uma coluna em uma tabela são válidos baseados nos valores em uma outra tabela relacionada.
+  - Atualização e Exclusão:
+    - Se um registro for excluído em uma tabela, então os registros relacionados em outras tabelas que o referenciam talvez precisem ser excluídos; Caso contrário ocorrerá erro. O mesmo se dá com atualização de registros;
+  -*Integridade de Domínio*: Valores inseridos em uma coluna devem sempre obedecer à definição dos valores que são permitidos para essa conta - os valores do domínio. Ex: em uma coluna que armazena preços de mercadorias, os valores admitidos são do domínio - ou seja, apenas números.
+  - Fatores:
+    -Tipo de dado do campo;
+    - Representação interna do tipo de dado;
+    - Presença ou não do dado;
+    - Intervalos de valores no domínio;
+    - Conjuntos de valores discretos;
+  -*Integridade de Vazio*: 
+  -*Integridade de Chave*: 
+  -*Integridade Definida pelo Usuário*: 
