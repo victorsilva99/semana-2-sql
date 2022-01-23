@@ -16,4 +16,13 @@
 
 - Continuação do curso de modelagem de Dados;
 - Finalizado parte teórica;
-- Iniciado projeto prático;
+
+## Dia 4
+
+- Principais comandos SQL;
+
+## Dia 5
+
+- Parte prática;
+- Exercícios;
+- Consolidação conteúdo;

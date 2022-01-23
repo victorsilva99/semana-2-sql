@@ -102,7 +102,7 @@ Diagramas são criados para representar graficamente entidades, atributos e rela
 ### Entidades
 
 As entidades representam um objeto do mundo real e que possuem uma existência independente, como: pessoas, empresa, carro, casa, entre outras coisas que podem ser representadas por uma entidade. Seria algo de importância para um usuário ou organização, algo significativo, sobre o qual devemos possuir informações e que precisa ser representado em um banco de Dados.
-Representa um tem, tópico ou conceito de negócio.
+Representa um item, tópico ou conceito de negócio.
 Uma entidade pode ter existência física ou abstrata.
 Nomeamos as entidades usando substantivos que presentam de forma clara e objetiva sua função.
 
@@ -128,7 +128,7 @@ Existem três tipos de entidades:
 
 - **Fortes**: Não dependem de outras entidades para existirem;
 - **Fracas**: Dependem de outras entidades para existir, ou seja, elas não possuem existência própria ou não possuem atributos próprios para identificação, dependendo assim, dos atributos chave das entidades fortes;
-- **Associativas**: são utilizadas quando existe a necessidade de associar uma entidade a um relacionamento;
+- **Associativas**: E implementada para resolver um relacionamento muitos-para-muitos (N:M); Gera uma tabela associativa, que permite mapear duas ou mais tabelas fazendo referência às chaves primárias de cada tabela; Contém chaves estrangeiras, cada uma em um relacionamento um-para-muitos da tabela de junção para as tabelas de dados individuais. Sua chave primária, no geral, é composta a partir das colunas de chaves estrangeiras em si. Uma tabela associativa também pode ser chamada de: *Tabela Referência Cruzada, Tabela de Intersecção, Tabela de Junção, Tabela de Mapeamento, Tabela de Transição, ou ainda outros nomes*
 
 ### Atributos
 
@@ -146,6 +146,8 @@ Os atributos descrevem as propriedades/características das entidades. A entidad
 - **Chave** - Um atributo-chave é um que é uma PK ou parte de uma PK composta;
 
 ### Relacionamento
+
+- **Relação** - Tabela bidimensional com características específicas, composta por linhas e colunas, criada a partir de uma entidade;
 
 Ligação entre dois atributos, de duas ou mais tabelas.
 As entidades podem ser conectadas entre si por meio de Relacionamentos. Trata-se de uma estrutura que indica a associação de elementos de uma ou mais entidades.
@@ -173,6 +175,7 @@ Exemplo: "uma pessoa trabalha para uma empresa". Seria uma associação nomeada 
 
 ### Grau de um relacionamento
 
+- O grau de um relacionamento corresponde ao número de entidades envolvidas na mesma relação
 - **Forte** - Onde uma entidade depende de outra para existir; A existência de uma entidade filha é depende de uma entidade-pai; A chave primária da entidade-filha contém a chave primária da entidade-pai; Se a entidade pai não existir, a entidade filha desaparece;
 - **Fraco** - A existência de uma entidade é independente de outras entidades; A chave primária de uma entidade-filha não contém a chave primária da entidade-pai;
 
@@ -188,7 +191,7 @@ Exemplo: "uma pessoa trabalha para uma empresa". Seria uma associação nomeada 
 - Usamos uma **Chave Estrangeira** para relacionar os dados entre múltiplas tabelas.
 - Usamos para isso o relacionamento entre chave primária de uma tabela com a chave estrangeira de outras tabelas.
 
-### Cardinalidade
+## Cardinalidade
 
 - Conceito que diz respeito ao número de itens que se relacionam nas entidades.
 - Pode ser máxima ou mínima, significando respectivamente os números mínimos e máximo de instância de cada entidade associada no relacionamento.
@@ -436,7 +439,7 @@ Uma chave primária em uma relação determina funcionalmente todos os outros at
 - **Tipos de Dependências Funcionais**:
   - *Total* - Em uma relação com um PK composta, um atributo não-chave que dependa dessa PK como um todo, e não somente de parte dela, é dito como possuindo **Dependência Funcional Total**.
   - *Parcial* - É parcial quando os atributos não-chave não dependem funcionalmente de toda a PK quando esta for composta. Ou seja, existe uma dependência funcional, mas somente de uma parte da chave primária.
-  - *Transitiva* - Ocorre quando um campo não depende diretamente da chave primária da tabela (nem mesmo parcialmente), mas depende de um outro campo não-chave. Em outras palavras, o atributo não deveria estar nessa tabela, e sim em outra e a partir disse criar o relacionamento.
+  - *Transitiva* - Ocorre quando um campo não-chave não depende diretamente da chave primária da tabela (nem mesmo parcialmente), mas depende de um outro campo não-chave. Em outras palavras, o atributo não deveria estar nessa tabela, e sim em outra e a partir disse criar o relacionamento.
   - *Multivalorada* - Ocorre quando, para cada valor de um atributo A, existe um conjunto de valores para outros atributos B e C que estão associados a ele, mas não independentes entre si. Representamos a dependência multivalorada assim:
 
   - *A ->> B*
@@ -538,3 +541,113 @@ Uma relação está em NBC se e somente se os únicos determinantes são chaves 
 2. Minimizar anomalias de inserção, exclusão e modificação;
 
 - As relações são decompostas em esquemas de relação menores que atendem aos testes de forma normal.
+
+## Tabelas
+
+*Intermediária* - Tabela que relaciona outras duas;
+*Relacional* - Tabela que se relaciona com uma outra;
+*Associativa* - A cardinalidade N para N leva para o modelo lógico a necessidade de definição de mais um entidade. Chamamos isto de ASSOCIATIVA.;
+
+## Fases para um projeto
+
+- Levantamento dos requisitos (Regras do Negócio);
+- Identificação de Entidades e relacionamentos;
+- Modelo E-R;
+- Diagrama E-R;
+- Dicionário de dados;
+- Normalização;
+- Implementação;
+- Testes Básicos;
+
+## Boas práticas
+
+### 1 - Nomes de objetos
+
+- Use apenas nomes significativos para os objetos do banco, como tabelas, colunas e procedimentos armazenados. Os nomes devem ser descritivos. Evite abreviações e siglas obscuras que possam atrapalhar a compreensão da finalidade do objeto.
+
+### 2 - Tipos corretos de dados
+
+- Usar os menores valores possíveis; A performance do banco é melhorada se usarmos os menores valores possíveis para os dados que os requisitos permitem.
+
+### 3 - Normalizar as tabelas
+
+- A normalização de dados é um princípio base dos bancos de dados relacionais, no qual os dados são organizados para minimizar ou eliminar a redundância. Normalizar até a 3FN. Desnormalizar se necessário.
+
+### 4 - Usar e Nomear Constraints
+
+- Ao nomear restrições, use prefixos que as descrevam, como por exemplo "PK" para chave primária ou "FK" para chave estrangeira, seguidos do nome da tabela (ou tabelas) envolvidas;
+  - pk_IdAutor;
+  - fk_IdEditora;
+
+### 5 - Identificação dos elementos do MER
+
+- Identifique os elementos de um modelo entidade relacionamento na seguinte ordem:
+  1. Entidade primeiro;
+  2. Relacionamentos na sequência;
+  3. Atributos de entidades por último;
+  4. Atributos de relacionamentos, se houverem
+
+### 6 - Tabelas Associativas
+
+- Prestar sempre muita atenção em relacionamentos muitos-para-muitos (N:M); Sempre que um relacionamento desse tipo ocorrer, simplificá-lo criando uma tabela associativa.
+
+### 7 - Relacionamentos n-ários
+
+- Também prestar sempre muita atenção quando surgirem relacionamentos n-ários, como ternários ou quaternários; Sempre que um relacionamento desse tipo ocorrer, simplificá-lo criando tabelas associativas.
+
+### 8 - Documentação
+
+- Documentar o processo de modelagem é de crucial importância:
+  - Criar o DER detalhado
+  - Criar Dicionário de dados
+  - Na codificação, usar comentários para descrever os scripts.
+
+### 9 - Prefixos de nomes de Objetos
+
+- Prefixar nomes de objetos para identificar sua categoria:
+  - *tb* ou *tbl* para **Tabelas**
+  - *vw* para **View**
+  - *db* para **Banco de dados**
+  - *sp* para **Procedimento Armazenado / Storage Procedure**
+  - *tg* para **Trigger**
+
+### 10 - Nomes de Tabelas e colunas
+
+- Use termos no singular para nomes de tabelas - por exemplo, *tblCliente* em vez de *tblClientes*, pois uma tabela representa uma coleção de entidades;
+- Idem para colunas - *NomeLivro* em vez de *NomesLivros*.
+- Procure não usar acentuação, espaços e caracteres especiais;
+
+### 11 - Levantamento e Análise de requisitos
+
+- Extremamente importante. Saiba levantar todas as informações necessárias para iniciar o processo de modelagem. Pergunte o máximo que puder, e anote toda informação fornecida pelo cliente/usuário. Interação sempre! Na dúvida, contato o cliente e pergunte;
+
+### 12 - Campos de chave primárias
+
+- Tabelas sempre devem possuir uma chave primária;
+- Procure usar chaves naturais, sempre que possível;
+- Entre uma chave composta ou surrogada, prefira está última;
+- Procure usar tipos numéricos em vez de caractere, para economizar recursos e aumentar a performance de busca.
+
+### 13 - Usar views
+
+- Procure usar views para ocultar a complexidade, forneces dados agregados e restringir o acesso a linhas de colunas das tabelas.
+
+### 14 - SELECT *
+
+- Evite realizar consultar retornando todas as colunas de uma tabela - SELECT * - a não ser que sejam realmente necessárias;
+- O ideal é sempre retornar apenas as colunas necessárias - SELECT [colunas] - para obter melhor performance.
+
+### 15 - Campos de Senha
+
+- Senhas sempre devem ser guardadas criptografadas - de preferência usando algoritmos fortes e *salt*.
+- A descriptação deve ocorrer na aplicação, quando for necessário.
+
+### 16 - Sempre utilizar Procedures e views
+
+- Aumentam a performance em colunas;
+- Diminuem possibilidade de erros;
+- Simplificam codificação da aplicação;
+
+### 17 - Usar índices em colunas muito consultadas
+
+- Índices podem aumentar significativamente a performance de acesso em consultas, caso colunas seja muito frequentemente acessadas. Crie índices sempre que detectar essa necessidade - mas cuidado com colunas que são modificadas com frequência;
